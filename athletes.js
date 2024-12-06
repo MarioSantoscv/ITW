@@ -1,6 +1,6 @@
 ﻿let fav = [];
 let VM;
-let favtype = "favAthletes";
+let favType = "favAthletes";
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
@@ -16,6 +16,8 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    self.Id = ko.observable(-1);
+
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
@@ -59,6 +61,8 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalAhletes);
+            self.Id(data.Id)
+            console.log(fav)
             SetHearths(fav);
             //self.SetFavourites();
 
@@ -128,9 +132,12 @@ var vm = function () {
 };
 
 $(document).ready(function () {
+    if (localStorage.getItem(favType) != null) {
+        fav = JSON.parse(localStorage.getItem(favType));
+    }
     console.log("ready!");
-    
-    ko.applyBindings(new vm());
+    VM = new vm() 
+    ko.applyBindings(VM);
 });
 
 

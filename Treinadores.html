@@ -25,9 +25,9 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bookmark-o text-danger"></i> Tabelas principais</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="/Projeto/athletes.html">Atletas</a></li>
-                            <li><a class="dropdown-item " href="/Projeto/Treinadores.html">Treinadores</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Technical_officials">Delegados | Árbitros</a></li>
+                            <li><a class="dropdown-item " href="./athletes.html">Atletas</a></li>
+                            <li><a class="dropdown-item " href="./Treinadores.html">Treinadores</a></li>
+                            <li><a class="dropdown-item " href="./Arbitros.html">Delegados | Árbitros</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="/Paris2024/Teams">Equipas</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -51,7 +51,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs text-success" aria-hidden="true"></i> Outras</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="/Projeto/torch.html">Tocha olímpica</a></li>
+                            <li><a class="dropdown-item " href="./torch.html">Tocha olímpica</a></li>
                             <li><a class="dropdown-item " href="/Paris2024/Venues">Estádios | Espaços</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="/Paris2024/Medals_total">Medalheiro</a></li>
@@ -80,7 +80,7 @@
             <div class="border-bottom pt-4 pb-2 mb-3">
                 <div class="row">
                     <div class=" col-md-8">
-                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Atletas</h2>
+                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Treinadores</h2>
                     </div>
                     <div class="col-md-6">
                         <button type="button"
@@ -111,20 +111,20 @@
                         <div class="col-8 my-0 pt-3">
                             <ul class="pagination float-end">
                                 <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './athletes_Copy.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './athletes_Copy.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Treinadores.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Treinadores.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
                                 <!-- /ko -->
                                 <!-- ko foreach: pageArray()-->
                                 <!-- ko if:$data == $parent.currentPage() -->
                                 <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
                                 <!-- /ko -->
                                 <!-- ko if:$data != $parent.currentPage() -->
-                                <li class="page-item"><a class="page-link" data-bind="attr: { href: './athletes_Copy.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
+                                <li class="page-item"><a class="page-link" data-bind="attr: { href: './Treinadores.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
                                 <!-- /ko -->
                                 <!-- /ko -->
                                 <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './athletes_Copy.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './athletes_Copy.html?page=' + totalPages() }">⇥</a></li>
+                                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Treinadores.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Treinadores.html?page=' + totalPages() }">⇥</a></li>
                                 <!-- /ko -->
                             </ul>
                         </div>
@@ -151,7 +151,7 @@
                                 <td scope="row" class="align-middle" data-bind="text:Sex"></td>
 
                                 <td scope="row" class="text-end">
-                                    <a class="cont" data-bind="attr: { href:'./AthletesDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
+                                    <a class="cont" data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
                                     <a class="cont"
                                        data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
                                         <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -199,7 +199,7 @@
                             <!-- ko if: favList().length > 0-->
                             <div class="modal-body col-12" data-bind="foreach: favList">
                                 <p class="lead col-12">
-                                    <a data-bind="attr: { href:'./AthletesDetails.html?id=' + Id }"></a>
+                                    <a data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"></a>
 
                                     <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
                                        class="fa fa-trash text-danger float-end"
@@ -217,7 +217,7 @@
                 <nav class="navbar fixed-bottom bg-body-tertiary border-top">
                     <div class="container small">
                         <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(#######)</div>
+                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
                         <div class="navbar-nav">
                             <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
                         </div>

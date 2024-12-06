@@ -82,8 +82,9 @@ let SetHearths = function (list) {
             let dataId = element.id;
 
             list.forEach((item) => {
+                console.log(element)
                 if (item.Id == dataId) {
-                    let iElement = $(element).find(".bd .cont i");
+                    let iElement = $(element).find(".cont .cont i");
                     iElement.removeClass("fa-heart-o");
                     iElement.addClass("fa-heart");
                     iElement.addClass("text-danger");
@@ -91,13 +92,13 @@ let SetHearths = function (list) {
             });
         });
 };
-
 //Remove a favorite from the list and update the viewmodel
 let removeFav = function (data, $currentTarget) {
     $currentTarget.parent().remove();
     $("#place")
         .children()
         .each((index, element) => {
+            console.log(data)
             if (element.id == data.Id) {
                 let iElement = $(element).find(".bd .cont i");
                 iElement.removeClass("fa-heart");
@@ -130,7 +131,6 @@ let manageFavs = function (data2) {
     } else {
         fav.push(data2);
     }
-
     localStorage.setItem(favType, JSON.stringify(fav));
 
     // checks the correct context that can be either a page that shows the favorites or where u can only add it

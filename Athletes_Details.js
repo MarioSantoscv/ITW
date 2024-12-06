@@ -15,7 +15,8 @@ var vm = function () {
     self.Function = ko.observable("Unavailable");
     self.Reason = ko.observable("Unavailable");
     self.Ritual = ko.observable("Unavailable");
-
+    self.Medals = ko.observable([]);
+    self.Sports= ko.observable([])
 
     self.Text = ko.computed(function () {
         let txt =
@@ -26,8 +27,9 @@ var vm = function () {
             "Weight: " + self.Weight() + "<hr/>" +
             "Function: " + self.Function() + "<hr/>" +
             "Reason: " + self.Reason() + "<hr/>" +
-            "Ritual: " + self.Ritual() + "<hr/>";
-            
+            "Ritual: " + self.Ritual() + "<hr/>" +
+            "Medals: " + self.Medals() + "<hr/>" +
+            "Sports: " + self.Sports() + "<hr/>";
         return txt;
     });
 
@@ -52,7 +54,8 @@ var vm = function () {
                 self.Function(data.Function);
                 self.Reason(data.Reason);
                 self.Ritual(data.Ritual);
-                self.Sport(data.Sport);
+                self.Sports(data.Sports);
+                self.Medals(data.Medals);
                 console.log(data);
             },
             error: function () {

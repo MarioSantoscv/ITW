@@ -6,7 +6,7 @@ var vm = function () {
     //---Variáveis locais
     var self = this;
     self.favList = ko.observable(fav);
-    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/Athletes');
+    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/Athletes'); 
     self.displayName = 'Paris2024 Athletes List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
@@ -129,6 +129,7 @@ var vm = function () {
 
 $(document).ready(function () {
     console.log("ready!");
+    
     ko.applyBindings(new vm());
 });
 

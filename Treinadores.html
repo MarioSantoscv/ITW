@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,7 +34,7 @@
                             <li><a class="dropdown-item " href="/Paris2024/Sports">Modalidades</a></li>
                             <li><a class="dropdown-item " href="/Paris2024/Competitions">Competições</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-info text-body-tertiary"></i> [Treinadores]/[Index]</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-info text-body-tertiary"></i> [Athletes]/[Index]</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -67,13 +67,12 @@
                     <li><a class="nav-link" href="/Paris2024/Help"><i class="fa fa-question-circle-o text-danger" aria-hidden="true"></i> Help</a></li>
                     <li class="navbar-text hstack"><div class="vr"></div></li>
                     <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="light" aria-pressed="false"><i class="theme-icon fa fa-sun-o" title="Modo claro"></i></div></li>
-
+                    
                     <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="dark" aria-pressed="false"><i class="theme-icon fa fa-moon-o" title="Modo escuro"></i></div></li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <div class="container-xl">
         <main role="main" class="pb-3">
 
@@ -81,7 +80,7 @@
             <div class="border-bottom pt-4 pb-2 mb-3">
                 <div class="row">
                     <div class=" col-md-8">
-                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Treinadores</h2>
+                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Atletas</h2>
                     </div>
                     <div class="col-md-6">
                         <button type="button"
@@ -103,29 +102,29 @@
                         </div>
                     </div>
                     <!-- Working Area -->
-                    <!-- ko if:coaches().length > 0 -->
+                    <!-- ko if:athletes().length > 0 -->
                     <div class="row small">
                         <p class=" col-4 mr-auto pt-2">
                             <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-                            <span data-bind="html: 'Coaches: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
+                            <span data-bind="html: 'Athletes: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
                         </p>
                         <div class="col-8 my-0 pt-3">
                             <ul class="pagination float-end">
                                 <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Treinadores.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Trenadores.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './athletes_Copy.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './athletes_Copy.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
                                 <!-- /ko -->
                                 <!-- ko foreach: pageArray()-->
                                 <!-- ko if:$data == $parent.currentPage() -->
                                 <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
                                 <!-- /ko -->
                                 <!-- ko if:$data != $parent.currentPage() -->
-                                <li class="page-item"><a class="page-link" data-bind="attr: { href: './Treinadores.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
+                                <li class="page-item"><a class="page-link" data-bind="attr: { href: './athletes_Copy.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
                                 <!-- /ko -->
                                 <!-- /ko -->
                                 <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Treinadores?page=' + nextPage(), rel:'next' }">→</a></li>
-                                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Treinadores?page=' + totalPages() }">⇥</a></li>
+                                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './athletes_Copy.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './athletes_Copy.html?page=' + totalPages() }">⇥</a></li>
                                 <!-- /ko -->
                             </ul>
                         </div>
@@ -136,21 +135,21 @@
                     <table class="table table-hover">
                         <thead class="thead-dark ">
                             <tr class="table-primary">
-                                <th scope="col">Nome</th>
-                                <th scope="col">Data Nascimento</th>
-                                <th scope="col">Função</th>
-                                <th scope="col">Sexo</th>
-                                <th scope="col">Pais que representa</th>
+                                <th scope="col">ID  </th>
+                                <th scope="col">Nome  </th>
+                                <th scope="col">Funcao  </th>
+                                <th scope="col">Sexo  </th>
+
                                 <th scope="col" class="text-right"></th>
                             </tr>
                         </thead>
-                        <tbody data-bind="foreach: coaches">
+                        <tbody data-bind="foreach: athletes">
                             <tr>
+                                <td scope="row" class="align-middle" data-bind="text:Id"></td>
                                 <td scope="row" class="align-middle" data-bind="text:Name"></td>
-                                <td scope="row" class="align-middle" data-bind="text:BirthDate"></td>
-                                <td scope="row" class="align-middle" data-bind="text:BirthCountry"></td>
+                                <td scope="row" class="align-middle" data-bind="text:Function"></td>
                                 <td scope="row" class="align-middle" data-bind="text:Sex"></td>
-                                <td scope="row" class="align-middle" data-bind="text:BirthCountry"></td>
+
                                 <td scope="row" class="text-end">
                                     <a class="cont" data-bind="attr: { href:'./AthletesDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
                                     <a class="cont"
@@ -214,15 +213,11 @@
                     </div>
                 </div>
 
-
-
-
-
-                <!-- Footer -->
+                <!-- End of Working Area -->
                 <nav class="navbar fixed-bottom bg-body-tertiary border-top">
                     <div class="container small">
                         <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(#######)</div>
                         <div class="navbar-nav">
                             <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
                         </div>
@@ -233,5 +228,6 @@
                 <script src="../lib/jquery/dist/jquery.min.js"></script>
                 <script src="myJs.js"></script>
                 <script src="Treinadores.js"></script>
+
 </body>
 </html>

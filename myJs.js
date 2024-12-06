@@ -75,7 +75,6 @@
 
 
 
-//At start, verify if there are any favorites and then set the hearts
 let SetHearths = function (list) {
     $("#place")
         .children()

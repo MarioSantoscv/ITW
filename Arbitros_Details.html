@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2024/25 - Paris 2024 Athletes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
+        <div class="container-xl">
+            <a href="/Projeto/index.html" class="navbar-brand p-0"><img src="/imagens/Paris2024.png" height="35" /></a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-md-inline-flex justify-content-between">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li><a class="nav-link" href="/Projeto/home.html"><i class="fa fa-home text-warning" aria-hidden="true"></i>Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bookmark-o text-danger"></i> Tabelas principais</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="./athletes.html">Atletas</a></li>
+                            <li><a class="dropdown-item " href="./Treinadores.html">Treinadores</a></li>
+                            <li><a class="dropdown-item " href="./Arbitros.html">Delegados | Árbitros</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Teams">Equipas</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Sports">Modalidades</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Competitions">Competições</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-info text-body-tertiary"></i> [Athletes]/[Index]</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-futbol-o text-primary" aria-hidden="true"></i> Torneios</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="/Paris2024/Athletics">Atletismo</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Basketballs">Basquetebol</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Canoe_Sprints">Canoagem de velocidade</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Cycling_Tracks">Ciclismo de pista</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Footballs">Futebol</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Swimmings">Natação</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs text-success" aria-hidden="true"></i> Outras</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="./torch.html">Tocha olímpica</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Venues">Estádios | Espaços</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Medals_total">Medalheiro</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Medals">Medalhas atribuidas</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="/Paris2024/NOCs">Comités Olímpicos Nacionais</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Nationalities">Nacionalidades</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link" href="/Paris2024/Home/Contact"><i class="fa fa-id-badge" aria-hidden="true"></i> Contato</a></li>
+                </ul>
+                <ul class="navbar-nav justify-content-end" id="bd-theme">
+                    <li><a class="nav-link" href="/Paris2024/Help"><i class="fa fa-question-circle-o text-danger" aria-hidden="true"></i> Help</a></li>
+                    <li class="navbar-text hstack"><div class="vr"></div></li>
+                    <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="light" aria-pressed="false"><i class="theme-icon fa fa-sun-o" title="Modo claro"></i></div></li>
+
+                    <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="dark" aria-pressed="false"><i class="theme-icon fa fa-moon-o" title="Modo escuro"></i></div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Informações</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Medalhas</button>
+        </div>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                <div class="container" id="nav-home-tab">
+                    <div class="card mb-3" style="max-width: 1650px;" id="info">
+                        <div class="row no-gutters">
+                            <div class="col-md-4  d-flex align-items-center justify-content-center">
+                                <img data-bind="attr: { src: Photo }"
+                                     class="img-fluid rounded" />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title" data-bind="text:Name"></h5>
+                                    <p class="card-text" data-bind="html: Text"></p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="./Arbitros.html" class="btn btn-sm small"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retornar aos Arbitros</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+            <div class="container" id="nav-home-tab">
+                <p>Mario</p>
+            </div>
+            <div>
+                <a href="./Arbitros.html" class="btn btn-sm small"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retornar aos Arbitros</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="myJs.js"></script>
+    <script src="Arbitros_Details.js"></script>
+</body>
+</html>

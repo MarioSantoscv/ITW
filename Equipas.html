@@ -29,7 +29,7 @@
                             <li><a class="dropdown-item " href="./Treinadores.html">Treinadores</a></li>
                             <li><a class="dropdown-item " href="./Arbitros.html">Delegados | Árbitros</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Teams">Equipas</a></li>
+                            <li><a class="dropdown-item " href="./Equipas.html">Equipas</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="/Paris2024/Sports">Modalidades</a></li>
                             <li><a class="dropdown-item " href="/Paris2024/Competitions">Competições</a></li>
@@ -152,7 +152,7 @@
                                 <td scope="row" class="align-middle" data-bind="text:Sport_Codes"></td>
 
                                 <td scope="row" class="text-end">
-                                    <a class="cont" data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
+                                    <a class="cont" data-bind="attr: { href:'./Equipas_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
                                     <a class="cont"
                                        data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
                                         <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -200,7 +200,7 @@
                             <!-- ko if: favList().length > 0-->
                             <div class="modal-body col-12" data-bind="foreach: favList">
                                 <p class="lead col-12">
-                                    <a data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"></a>
+                                    <a data-bind="attr: { href:'./Equipas_Details.html?id=' + Id }"></a>
 
                                     <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
                                        class="fa fa-trash text-danger float-end"

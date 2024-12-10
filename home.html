@@ -1,168 +1,45 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>NBA-ITW</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
-          rel="stylesheet" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-    <link rel="stylesheet" href="myCSS.css" />
-    <link rel="manifest" href="manifest.json" />
-    <style>
-        html {
-            height: 90%;
-        }
-
-        body {
-            height: 100%;
-            overflow: hidden;
-            padding-bottom: 0;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2024/25 - Paris 2024 Athletes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-        <div class="container col-1">
-            <a class="navbar-brand" href="#" tabindex="NBA">
-                <img src="images/nba.png" alt="NBA" height="24" />
-            </a>
 
-            <ul class="navbar-nav d-md-block d-none me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <button class="btn text-secondary" id="btnSwitch">
-                        <i class="fa fa-moon-o" aria-hidden="true" title="Dark/Light"></i>
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
-    <div class="container bg-black boardBgLight rounded-3">
-        <div class="row col-12 snowrow">
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
 
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
 
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-            <p><i class="fa fa-snowflake-o sf" aria-hidden="true"></i></p>
-        </div>
-        <div class="row" style="height: 100%">
-            <div class="container col-8 m-0">
-                <div class="input-group col-12">
-                    <span class="input-group-icon border-0 boardT board">
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                    </span>
-                    <input spellcheck="false"
-                           id="search"
-                           type="text"
-                           class="boardT board"
-                           style="margin-left: 1%" />
-                </div>
-                <div class="d-lg-block d-none" id="game">
-                    <img class="d-none d-lg-block"
-                         src="./images/Santa_Hat.png"
-                         style="height: 90px"
-                         id="game-Main" />
-                </div>
-            </div>
 
-            <div class="container col-4 m-0 results">
-                <div class="d-flex align-items-center" style="margin-left: 30%">
-                    <p class="boarT board"
-                       style="border: 0; font-size: large; font-weight: initial">
-                        <u>Welcome</u>
-                    </p>
-                </div>
-                <!-- ko if: suggestions().length === 0 || Word().length === 0 -->
-                <a class="op boardT" href="arenas.html"><i class="fa fa-soccer-ball-o text-warning"></i> Arenas</a><br />
-                <a class="op boardT" href="player.html"><i class="fa fa-user-o text-primary"></i> Players</a><br />
-                <a class="op boardT" href="team.html"><i class="fa fa-users text-danger"></i> Teams</a><br />
-                <a class="op boardT" href="state.html"><i class="fa fa-map-marker text-danger"></i> States </a><br />
-                <a class="op boardT" href="position.html"><i class="fa fa-bullseye text-info"></i> Positions</a><br />
-                <a href="seasons.html" class="op boardT">
-                    <i class="fa fa-trophy" style="color: #ffa500" aria-hidden="true">
-                    </i>Seasons
-                </a><br />
-                <a href="divisions.html" class="op boardT"><i class="fa fa-ravelry" aria-hidden="true"></i>Divisions </a><br />
-                <a href="quiz.html" class="op boardT"><i class="fa fa-question-circle" aria-hidden="true"></i>Quiz </a><br />
-                <!-- /ko -->
-                <!-- ko if: Word().length > 0-->
 
-                <div data-bind="foreach: suggestions">
-                    <!-- ko if: Category === 'Arenas' || Category === 'Players' -->
-                    <!-- ko if: Category === 'Arenas' -->
-                    <a class="op boardT fade-in" data-bind="attr:{href: link1}">
-                        <p data-bind="text: Name+'['+Category+']'"></p>
-                    </a>
-                    <!-- /ko -->
-                    <!-- ko if: Category === 'Players' -->
-                    <a class="op boardT fade-in" data-bind="attr:{href: link1}">
-                        <p data-bind="text: Name +' ['+Category+']'"></p>
-                    </a>
-                    <!-- /ko -->
-                    <!-- /ko -->
-                    <!-- ko if: Category === 'Teams' -->
-                    <a class="op boardT fade-in" data-bind="attr:{href: link3}">
-                        <p data-bind="text: Name+' ['+Category+']'"></p>
-                    </a>
-                    <!-- /ko -->
-                    <!-- ko if: Category === 'States'|| Category ==='Seasons'-->
-                    <!-- ko if: Category === 'States' -->
-                    <a class="op boardT fade-in" data-bind="attr:{href: link2}">
-                        <p data-bind="text: Name+' ['+Category+']'"></p>
-                    </a>
-                    <!-- /ko -->
-                    <!-- ko if: Category === 'Seasons' -->
-                    <a class="op boardT fade-in" data-bind="attr:{href: link2}">
-                        <p data-bind="text: Id+' ['+Category+']'"></p>
-                    </a>
-                    <!-- /ko -->
-                    <!-- /ko -->
-                </div>
-                <!-- /ko -->
-            </div>
-        </div>
-    </div>
 
-    <nav class="navbar bg-body-tertiary fixed-bottom">
+
+
+
+
+
+
+
+
+
+    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
         <div class="container small">
-            <div class="navbar-text">
-                &copy; Introdução as Tecnologias Web - 2023/24
-            </div>
-            <div class="navbar-text">T.Vicente (121497)</div>
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(#######)</div>
             <div class="navbar-nav">
-                <div class="nav-item text-end text-light">
-                    <a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a>
-                </div>
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
             </div>
         </div>
     </nav>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
-    <script src="home.js"></script>
-    <script src="myJS.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="myJs.js"></script>
 </body>
 </html>

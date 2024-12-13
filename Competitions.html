@@ -138,7 +138,7 @@
                                 <th scope="col">ID  </th>
                                 <th scope="col">Nome  </th>
                                 <th scope="col">Modalidade  </th>
-                                
+
 
                                 <th scope="col" class="text-right"></th>
                             </tr>
@@ -148,10 +148,10 @@
                                 <td scope="row" class="align-middle" data-bind="text:SportId"></td>
                                 <td scope="row" class="align-middle" data-bind="text:Name"></td>
                                 <td scope="row" class="align-middle" data-bind="text:Tag"></td>
-                               
+
 
                                 <td scope="row" class="text-end">
-                                    <a class="cont" data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
+                                    <a class="cont" data-bind="attr: { href:'./Competitions_details.html?id=' + SportId+'&name='+Name }"><i class="fa fa-eye" title="Show details"></i></a>
                                     <a class="cont"
                                        data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
                                         <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -199,7 +199,7 @@
                             <!-- ko if: favList().length > 0-->
                             <div class="modal-body col-12" data-bind="foreach: favList">
                                 <p class="lead col-12">
-                                    <a data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"></a>
+                                    <a data-bind="attr: { href:'./Competitions_details.html?id=' + SportId }"></a>
 
                                     <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
                                        class="fa fa-trash text-danger float-end"
@@ -226,6 +226,7 @@
                 <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
                 <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
                 <script src="../lib/jquery/dist/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
                 <script src="myJs.js"></script>
                 <script src="Competitions.js"></script>
 

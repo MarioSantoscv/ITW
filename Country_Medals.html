@@ -55,7 +55,7 @@
                             <li><a class="dropdown-item " href="/Paris2024/Venues">Estádios | Espaços</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="/Paris2024/Medals_total">Medalheiro</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Medals">Medalhas atribuidas</a></li>
+                            <li><a class="dropdown-item " href="./Medals.html">Medalhas atribuidas</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="./Noc.html">Comités Olímpicos Nacionais</a></li>
                             <li><a class="dropdown-item " href="/Paris2024/Nationalities">Nacionalidades</a></li>
@@ -82,14 +82,7 @@
                     <div class=" col-md-8">
                         <h2><i class="text-danger fa fa-user-o"></i> Lista de Treinadores</h2>
                     </div>
-                    <div class="col-md-6">
-                        <button type="button"
-                                class="btn btn-outline-danger"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                            Favoritos
-                        </button>
-                    </div>
+
                     <div class="col-md-6">
                         <div class="input-group rounded">
                             <input id="search"
@@ -111,130 +104,77 @@
                         <div class="col-8 my-0 pt-3">
                             <ul class="pagination float-end">
                                 <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Noc - Copy.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Noc - Copy.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Medals.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Medals.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
                                 <!-- /ko -->
                                 <!-- ko foreach: pageArray()-->
                                 <!-- ko if:$data == $parent.currentPage() -->
                                 <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
                                 <!-- /ko -->
                                 <!-- ko if:$data != $parent.currentPage() -->
-                                <li class="page-item"><a class="page-link" data-bind="attr: { href: './Noc - Copy.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
+                                <li class="page-item"><a class="page-link" data-bind="attr: { href: './Medals.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
                                 <!-- /ko -->
                                 <!-- /ko -->
                                 <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Noc - Copy.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Noc - Copy.html?page=' + totalPages() }">⇥</a></li>
+                                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Medals.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Medals.html?page=' + totalPages() }">⇥</a></li>
                                 <!-- /ko -->
                             </ul>
                         </div>
                     </div>
                     <!-- /ko -->
-                    <!-- Start of Card Layout -->
-                    <div class="row">
-                        <!-- ko foreach: athletes -->
-                        <div class="col-md-3 mb-4">
-                            <div class="card" style="width: 18rem; height: 300px;">
-                                <!-- Fixed card height -->
-                                <!-- Image with onerror and class adjustments -->
-                                <img data-bind="attr: { src: Photo }"
-                                     onerror="this.src='../imagens/PersonNotFound.png'"
-                                     class="card-img-top img-fluid rounded"
-                                     style="height: 180px; object-fit: cover;" />
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <!-- Flexbox for vertical alignment -->
-                                    <h5 class="card-title text-center" data-bind="text: Country"></h5> <!-- Center the name -->
-                                    <div class="d-flex justify-content-center mt-auto">
-                                        <!-- Detail Button -->
-                                        <a class="cont mx-2" data-bind="attr: { href:'./Noc_details.html?id=' + Id }">
-                                            <i class="fa fa-eye" title="Show details"></i>
-                                        </a>
-                                        <!-- Favorite Button -->
-                                        <a class="cont mx-2" data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /ko -->
-                    </div>
-                    <!-- End of Card Layout -->
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        <img src="/imagens/Paris2024.png" height="30" /> Loading data...
-                                    </h5>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <i class="fa fa-spin fa-3x fa-refresh"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade"
-                         id="exampleModal"
-                         tabindex="-1"
-                         role="dialog"
-                         aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold" id="exampleModalLabel">
-                                        Favoritos
-                                    </h5>
-                                    <button type="button"
-                                            class="close b-0 bg-body-tertiary"
-                                            data-bs-dismiss="modal"
-                                            aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <!-- ko if: favList().length > 0-->
-                                <div class="modal-body col-12" data-bind="foreach: favList">
-                                    <p class="lead col-12">
-                                        <a data-bind="attr: { href:'./Noc_details.html?id=' + Id }"></a>
-
-                                        <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
-                                           class="fa fa-trash text-danger float-end"
-                                           aria-hidden="true"
-                                           data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
-                                    </p>
-                                    <br />
-                                </div>
-                                <!-- /ko -->
-                            </div>
-                        </div>
-                    </div>
 
 
+                    <table class="table table-hover">
+                        <thead class="thead-dark ">
+                            <tr class="table-primary">
+                                <th scope="col">Modalidade </th>
+                                <th scope="col">Competição  </th>
+                                <th scope="col">Tipo de Medalha  </th>
+                                <th scope="col">Sexo  </th>
+                                <th scope="col">Nome (Atleta|Equipa)  </th>
+                                <th scope="col">NOC  </th>
 
 
+                                <th scope="col" class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: athletes">
+                            <tr>
+                                <td scope="row" class="align-middle" data-bind="text:Sport"></td>
+                                <td scope="row" class="align-middle" data-bind="text:Competition"></td>
+                                <td scope="row" class="align-middle" data-bind="text:MedalName"></td>
+                                <td scope="row" class="align-middle" data-bind="text:Sex"></td>
+                                <td scope="row" class="align-middle" data-bind="text:WinnerName"></td>
+                                <td scope="row" class="align-middle" data-bind="text:CountryCode"></td>
 
+                                <td scope="row" class="text-end">
+                                    <a class="cont" data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
 
-
-
-
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-                <div class="container small">
-                    <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                    <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
-                    <div class="navbar-nav">
-                        <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+
+
+
+                <!-- End of Working Area -->
+                <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+                    <div class="container small">
+                        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+                        <div class="navbar-nav">
+                            <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+                        </div>
                     </div>
-                </div>
-            </nav>
-            <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
-            <script src="../lib/jquery/dist/jquery.min.js"></script>
-            <script src="myJs.js"></script>
-            <script src="NOC.js"></script>
+                </nav>
+                <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+                <script src="../lib/jquery/dist/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+                <script src="myJs.js"></script>
+                <script src="Medals.js"></script>
+
 </body>
-                  
 </html>

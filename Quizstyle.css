@@ -1,0 +1,92 @@
+﻿/* Centraliza o jogo e adiciona estilo */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(to bottom, #74b9ff, #0984e3);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+#quiz-section {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-out, scaleUp 1s ease-in-out;
+}
+
+    #quiz-section h2 {
+        color: #000000; 
+        font-weight: bold;
+        text-shadow: none;
+    }
+
+
+ #result-container {
+        background-color: black; /* Fundo do resultado mais escuro */
+        color: wheat; /* Texto branco para contraste */
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #review-container .list-group-item {
+        color: black; /* Cor do texto preto */
+        font-size: 16px; /* Tamanho do texto ajustado */
+    }
+
+    #review-container .list-group-item .text-muted {
+        color: black; /* Deixando o texto de resposta mais claro */
+    }
+
+    .list-group-item i {
+        font-size: 20px; /* Ícones maiores para destacar */
+    }
+
+#quiz-container {
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+#next-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.list-group-item:hover {
+    background-color: #dfe6e9;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Animação inicial */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Rodapé estilizado */
+nav.fixed-bottom {
+    background: #2d3436;
+    color: white;
+}
+
+    nav.fixed-bottom a {
+        color: #74b9ff;
+    }

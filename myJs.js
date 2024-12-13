@@ -138,3 +138,198 @@ let manageFavs = function (data2) {
         VM.favList(fav);
     }
 };
+
+function ActiveAutocomplete(id, url, href, type, type2) {
+    console.log("ActiveAutocomplete", url);
+
+    let save = [];
+    $(id).autocomplete({
+        source: function (request, response) {
+            if (request.term.length == 1 || save.length === 0) {
+                save = [];
+                SearcUri = url + request.term;
+                console.log("accessing:" + SearcUri);
+                $.ajax({
+                    url: SearcUri,
+                    method: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        let result = [];
+
+                        console.log("Using data: ", data.length, " items");
+
+                        if (data.length) {
+                            if (type == "id") {
+                                data.forEach(function (item) {
+                                    let obj = {
+                                        label: item.Id,
+                                        Id: item.Id,
+                                        acronym: item.Acronym,
+                                    };
+                                    save.push(obj);
+                                    if (result.length < 10) {
+                                        result.push(obj);
+                                    }
+                                });
+                            } else {
+                                data.forEach(function (item) {
+                                    let obj = {
+                                        label: item.Name,
+                                        Id: item.Id,
+                                        acronym: item.Acronym,
+                                    };
+                                    save.push(obj);
+                                    if (result.length < 10) {
+                                        result.push(obj);
+                                    }
+                                });
+                            }
+
+                            console.log(result);
+                        } else {
+                            alert("No data found");
+                            console.log("No data received.");
+                        }
+                        response(result);
+                    },
+                    error: function () {
+                        console.log("Error ");
+                    },
+                });
+            } else {
+                console.log("using save: ", save.length, " items");
+                let saveRes = $.ui.autocomplete.filter(save, request.term);
+                response(saveRes.slice(0, 10));
+            }
+        },
+        select: function (event, ui) {
+            if (type2 == "id") {
+                window.location.href = href + ui.item.Id;
+            } else if (type2 == "name") {
+                console.log(ui.item.name);
+                window.location.href = href + ui.item.Name;
+            } else {
+                window.location.href =
+                    href + ui.item.Id + "&acronym=" + ui.item.acronym;
+            }
+        },
+    });
+}
+function ActiveAutocomplete(id, url, href, type, type2) {
+    console.log("ActiveAutocomplete", url);
+
+    let save = [];
+    $(id).autocomplete({
+        source: function (request, response) {
+            if (request.term.length == 1 || save.length === 0) {
+                save = [];
+                SearcUri = url + request.term;
+                console.log("accessing:" + SearcUri);
+                $.ajax({
+                    url: SearcUri,
+                    method: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        let result = [];
+
+                        console.log("Using data: ", data.length, " items");
+
+                        if (data.length) {
+                            if (type == "id") {
+                                data.forEach(function (item) {
+                                    let obj = {
+                                        label: item.Id,
+                                        Id: item.Id,
+                                        acronym: item.Acronym,
+                                    };
+                                    save.push(obj);
+                                    if (result.length < 10) {
+                                        result.push(obj);
+                                    }
+                                });
+                            } else {
+                                data.forEach(function (item) {
+                                    let obj = {
+                                        label: item.Name,
+                                        Id: item.Id,
+                                        acronym: item.Acronym,
+                                    };
+                                    save.push(obj);
+                                    if (result.length < 10) {
+                                        result.push(obj);
+                                    }
+                                });
+                            }
+
+                            console.log(result);
+                        } else {
+                            alert("No data found");
+                            console.log("No data received.");
+                        }
+                        response(result);
+                    },
+                    error: function () {
+                        console.log("Error ");
+                    },
+                });
+            } else {
+                console.log("using save: ", save.length, " items");
+                let saveRes = $.ui.autocomplete.filter(save, request.term);
+                response(saveRes.slice(0, 10));
+            }
+        },
+        select: function (event, ui) {
+            if (type2 == "id") {
+                window.location.href = href + ui.item.Id;
+            } else if (type2 == "name") {
+                console.log(ui.item.name);
+                window.location.href = href + ui.item.Name;
+            } else {
+                window.location.href =
+                    href + ui.item.Id + "&acronym=" + ui.item.acronym;
+            }
+        },
+    });
+}
+function AutocompleteLst(Array, id, mode) {
+    $(id).autocomplete({
+        source: function (request, response) {
+            console.log(id, " is working");
+            // Filter the PlayersArray based on the search term
+            var results = Array().filter(function (item) {
+                return item.label.toLowerCase().includes(request.term.toLowerCase());
+            });
+            response(results.slice(0, 10));
+        },
+        select: function (event, ui) {
+            let url=""
+              switch (mode) {
+                case "1":
+                    url = "./teamDetails.html?" + ui.item.id 
+                    break;
+                case "2":
+                    url = "./Medals_Details.html?id=" + ui.item.id;
+                    break;
+                case "3":
+                    url = "./Player_Profile.html?id=" + ui.item.id;
+                    break;
+                case "4":
+                    url = "./Event_Schedule.html?event=" + ui.item.event;
+                    break;
+                case "5":
+                    url = "./Game_Results.html?game=" + ui.item.gameId;
+                    break;
+                case "6":
+                    url = "./Venue_Info.html?venue=" + ui.item.venueId;
+                    break;
+                case "7":
+                    url = "./Official_List.html?official=" + ui.item.officialId;
+                    break;
+                case "8":
+                    url = "./Broadcast_Schedule.html?channel=" + ui.item.channelId;
+                    break;
+            }
+            window.location.href=url
+        },
+    });
+}

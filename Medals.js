@@ -1,14 +1,13 @@
-﻿
-
-let fav = [];
+﻿let fav = [];
 let VM;
 let favtype = "favAthletes";
+
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
     self.favList = ko.observable(fav);
-    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/Sports');
+    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/Medals');
     self.displayName = 'Paris2024 Athletes List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
@@ -18,6 +17,18 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    self.PlayersArray = ko.computed(function () {
+        var playersArray = self.athletes();
+        var length = playersArray.length;
+        var list = [];
+        for (var i = 0; i < length; i++) {
+            list.push({
+                id: playersArray[i].WinnerId,
+                label: playersArray[i].WinnerName,
+            });
+        }
+        return list;
+    });
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
@@ -54,14 +65,14 @@ var vm = function () {
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
-            self.athletes(data.Sports);
+            self.athletes(data.Medals);
             self.currentPage(data.CurrentPage);
             self.hasNext(data.HasNext);
             self.hasPrevious(data.HasPrevious);
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
-            self.totalRecords(data.TotalSports);
-            SetHearths(fav);
+            self.totalRecords(data.TotalMedals);
+            
 
             //self.SetFavourites();
 
@@ -134,6 +145,8 @@ $(document).ready(function () {
     console.log("ready!");
 
     ko.applyBindings(new vm());
+    viewModel = new vm();
+    AutocompleteLst(viewModel.PlayersArray, "#search", "2");
 });
 
 

@@ -52,17 +52,22 @@ var vm = function () {
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
+
+            // Process data to ensure fallback image for null Photos
+            data.NOCs.forEach(noc => {
+                noc.Photo = noc.Photo || '../imagens/PersonNotFound.png'; // Fallback image
+            });
+
+            // Bind the processed data to the observable array
             self.athletes(data.NOCs);
             self.currentPage(data.CurrentPage);
             self.hasNext(data.HasNext);
             self.hasPrevious(data.HasPrevious);
-            self.pagesize(data.PageSize)
+            self.pagesize(data.PageSize);
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalNOCs);
+
             SetHearths(fav);
-
-            //self.SetFavourites();
-
         });
     };
 
@@ -132,6 +137,13 @@ $(document).ready(function () {
     console.log("ready!");
 
     ko.applyBindings(new vm());
+    ActiveAutocomplete(
+        "#search",
+        "http://192.168.160.58/Paris2024/api/NOCs/Search?q=",
+        "./Noc_Details.html?id=",
+        "name",
+        "id"
+    );
 });
 
 

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Quiz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <link href="Quizstyle.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
+        <div class="container-xl">
+            <a href="index.html" class="navbar-brand p-0"><img src="/Paris2024/Images/Paris2024.png" height="35" /></a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-md-inline-flex justify-content-between">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li><a class="nav-link" href="Quiz.html"><i class="fa fa-gamepad" aria-hidden="true"></i> Quiz Game</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bookmark-o text-danger"></i> Tabelas principais</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="athletes.html">Atletas</a></li>
+                            <li><a class="dropdown-item " href="Coaches.html">Treinadores</a></li>
+                            <li><a class="dropdown-item " href="Arbitros.html">Delegados | Árbitros</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="Teams.html">Equipas</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="modalidades.html">Modalidades</a></li>
+                            <li><a class="dropdown-item " href="Competicoes.html">Competições</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-futbol-o text-primary" aria-hidden="true"></i> Torneios</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="Athletics.html">Atletismo</a></li>
+                            <li><a class="dropdown-item " href="Basketballs.html">Basquetebol</a></li>
+                            <li><a class="dropdown-item " href="Canoe_Sprints.html">Canoagem de velocidade</a></li>
+                            <li><a class="dropdown-item " href="Cycling_Tracks.html">Ciclismo de pista</a></li>
+                            <li><a class="dropdown-item " href="Footballs.html">Futebol</a></li>
+                            <li><a class="dropdown-item " href="Swimmings.html">Natação</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs text-success" aria-hidden="true"></i> Outras</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="torch.html">Tocha olímpica</a></li>
+                            <li><a class="dropdown-item " href="Estadios.html">Estádios | Espaços</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="medalheiro.html">Medalheiro</a></li>
+                            <li><a class="dropdown-item " href="medalhas.html">Medalhas atribuidas</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="Comites.html">Comités Olímpicos Nacionais</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Nationalities">Nacionalidades</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link" href="Contato.html"><i class="fa fa-id-badge" aria-hidden="true"></i> Contato</a></li>
+                </ul>
+                <ul class="navbar-nav justify-content-end" id="bd-theme">
+                    <li><a class="nav-link" href="help.html"><i class="fa fa-question-circle-o text-danger" aria-hidden="true"></i> Help</a></li>
+                    <li class="navbar-text hstack"><div class="vr"></div></li>
+                    <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="light" aria-pressed="false"><i class="theme-icon fa fa-sun-o" title="Modo claro"></i></div></li>
+
+                    <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="dark" aria-pressed="false"><i class="theme-icon fa fa-moon-o" title="Modo escuro"></i></div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!---Carousel-->
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-block w-100" style="background: url('Images/banner1.png') center center; height: 600px; background-size: cover;" alt="First slide"></div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-block w-100" style="background: url('Images/banner2.png') center center; height: 600px; background-size: cover;" alt="Second slide"></div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-block w-100" style="background: url('Images/banner3.png') center center; height: 600px; background-size: cover;" alt="Third slide"></div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-block w-100" style="background: url('Images/banner4.png') center center; height: 600px; background-size: cover;" alt="Third slide"></div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!--O jogo QUIZ-->
+    <!-- Seção do Jogo Quiz -->
+    <div class="container my-5" id="quiz-section">
+        <h2 class="text-center">Quiz dos Jogos Olímpicos - Paris 2024</h2>
+        <div id="quiz-container" class="card p-4 shadow-sm">
+            <div id="question" class="mb-4 fw-bold h4"></div>
+            <div id="options" class="list-group"></div>
+            <button id="next-btn" class="btn btn-primary mt-4 d-none">Próxima</button>
+        </div>
+        <div id="result-container" class="alert alert-info mt-4 d-none">
+            <h4 class="text-center">Resultado</h4>
+            <p id="score" class="text-center h5"></p>
+        </div>
+        <div id="review-container"></div>
+
+    </div>
+
+
+    <!--------------------------------------------------------Footer------------------------------------------------------>
+    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none text-muted">kelvin.loforte@ua.pt</a>.</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="myJs.js"></script>
+    <script src="Quiz.js"></script>
+
+</body>
+</html>

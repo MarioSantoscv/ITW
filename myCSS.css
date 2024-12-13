@@ -1,0 +1,430 @@
+﻿modal {
+  z-index: 100;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 56px 0 56px 0;
+  overflow-y: scroll;
+  overflow: visible;
+  background-image: url("./images/bgd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* button default
+---------------------------- */
+.btn-default {
+  color: #333;
+  background-color: #f8f9fa;
+  border-color: #ccc;
+}
+
+.btn-default:focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+
+.btn-default:active,
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+/* button-xs
+---------------------------- */
+.btn-group-xs > .btn,
+.btn-xs {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+li.page-item a {
+  font-size: 0.85rem;
+}
+
+.brightness {
+  display: inline-block;
+}
+
+.brightness img:hover {
+  opacity: 0.5;
+}
+
+.box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.ui-autocomplete {
+  position: absolute;
+  z-index: 1000;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 2px;
+  list-style: none;
+  background-color: #2b2a2a;
+  border: none;
+}
+.ui-autocomplete > li {
+  padding: 3px 20px;
+  color: #3449ed;
+}
+.ui-menu-item:hover {
+  background-color: #6b6868;
+}
+
+a:hover {
+  font-weight: bolder;
+}
+
+a {
+  text-decoration: none;
+}
+
+.custom-card {
+  height: 200px;
+}
+
+.custom-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.custom-card:hover .custom-card-img {
+  opacity: 1;
+}
+
+.custom-card-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-card:hover .custom-card-body {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.break {
+}
+
+.custom-card-body-opposite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.custom-card-opposite:hover .custom-card-body-opposite {
+  opacity: 1;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.graf {
+  width: 100%;
+  height: auto;
+  margin-left: none;
+}
+
+.m {
+  max-height: 300px;
+}
+
+.boardBgLight {
+  cursor: url("./images/Giz.png"), auto;
+  opacity: 0.8;
+  background-color: #000000;
+  height: 90%;
+  margin-top: 5%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 40px rgba(243, 2, 247, 0.5);
+  margin-bottom: 0;
+}
+
+.board {
+  background: none;
+  margin-top: 5%;
+  margin-left: 5%;
+  border: none;
+  border-bottom: solid 2px #ffffff;
+  outline: none;
+  font-family: "Fredericka the Great", cursive;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.boardDark {
+  background: none;
+  margin-top: 5%;
+  margin-left: 5%;
+  border: none;
+  border-bottom: solid 2px #ffffff;
+  outline: none;
+  font-family: "Fredericka the Great";
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#game {
+  height: 90%;
+  padding: 0;
+  padding-top: 2%;
+  position: relative;
+}
+
+.op {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 120%;
+  font-family: "Fredericka the Great";
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.results {
+  padding-top: 2%;
+  padding-right: 1%;
+  border-left: 1px solid #ffffff;
+  padding-left: 5%;
+}
+
+#game-Main {
+  position: absolute;
+  bottom: 6px;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+}
+
+.mouseP {
+  cursor: pointer;
+}
+
+.mouseG {
+  cursor: grab;
+}
+
+.rotated-image {
+  transform: rotateY(180deg);
+}
+
+#limits {
+  position: relative;
+  height: 650px;
+  margin-top: 7%;
+  padding-top: 2%;
+}
+
+.game-options {
+  background-image: url("./images/cesta.png");
+  background-repeat: no-repeat;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  width: 20%;
+  height: 120%;
+  color: black;
+}
+
+.options-row {
+  height: 30%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.quiz-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.plataform {
+  position: absolute;
+  height: 2%;
+  margin-top: 15%;
+  margin-left: 36%;
+}
+
+.options {
+  padding: 0;
+  height: 20%;
+  margin-top: 15%;
+  margin-left: 10%;
+  color: white;
+  font-weight: bold;
+  font-size: 100%;
+  width: 70%;
+  max-width: 100%;
+}
+
+.snowrow {
+  position: absolute;
+  z-index: 3;
+}
+
+.snowrow p {
+  display: inline-block;
+  margin-right: 5px;
+  position: absolute;
+}
+
+.sf {
+  width: 5px;
+  margin-right: 40px;
+  animation: fall 8s infinite;
+  color: #fff;
+}
+.snowrow p:nth-child(1) {
+  top: 10px;
+  left: 10px;
+}
+.snowrow p:nth-child(2) {
+  top: 20px;
+  left: 120px;
+}
+.snowrow p:nth-child(3) {
+  top: 5px;
+  left: 600px;
+}
+.snowrow p:nth-child(4) {
+  top: 40px;
+  left: 350px;
+}
+.snowrow p:nth-child(5) {
+  top: 25px;
+  left: 1000px;
+}
+.snowrow p:nth-child(6) {
+  top: 15px;
+  left: 1200px;
+}
+.snowrow p:nth-child(7) {
+  top: 30px;
+  left: 443px;
+}
+.snowrow p:nth-child(8) {
+  top: 50px;
+  left: 836px;
+}
+
+.snowrow p:nth-child(9) {
+  top: 10px;
+  left: 23px;
+}
+.snowrow p:nth-child(10) {
+  top: 20px;
+  left: 114px;
+}
+.snowrow p:nth-child(11) {
+  top: 5px;
+  left: 632px;
+}
+.snowrow p:nth-child(12) {
+  top: 40px;
+  left: 374px;
+}
+.snowrow p:nth-child(13) {
+  top: 25px;
+  left: 892px;
+}
+.snowrow p:nth-child(14) {
+  top: 15px;
+  left: 1098px;
+}
+.snowrow p:nth-child(15) {
+  top: 30px;
+  left: 543px;
+}
+.snowrow p:nth-child(16) {
+  top: 50px;
+  left: 966px;
+}
+
+.snowrow p:nth-child(17) {
+  top: 10px;
+  left: 34px;
+}
+.snowrow p:nth-child(18) {
+  top: 20px;
+  left: 138px;
+}
+.snowrow p:nth-child(19) {
+  top: 5px;
+  left: 587px;
+}
+.snowrow p:nth-child(20) {
+  top: 40px;
+  left: 327px;
+}
+.snowrow p:nth-child(21) {
+  top: 25px;
+  left: 987px;
+}
+.snowrow p:nth-child(22) {
+  top: 15px;
+  left: 1147px;
+}
+.snowrow p:nth-child(23) {
+  top: 30px;
+  left: 497px;
+}
+.snowrow p:nth-child(24) {
+  top: 50px;
+  left: 763px;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(850px);
+  }
+}
+
+.RankBg {
+  box-shadow: 0 0 400px rgba(0, 195, 254, 0.5);
+}
+.CardBg {
+  box-shadow: -5px 5px 8px rgba(255, 0, 0, 0.2),
+    5px -5px 8px rgba(0, 0, 255, 0.2);
+}
+.CardBg:hover {
+  transform: scale(1.05);
+}
+
+.Wtext {
+  position: absolute;
+  right: 0%;
+  top: -5%;
+  text-decoration: underline;
+}
+.Ltext {
+  position: absolute;
+  left: 0%;
+  top: -5%;
+  font-size: 350%;
+}

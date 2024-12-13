@@ -138,6 +138,13 @@ $(document).ready(function () {
     console.log("ready!");
     VM = new vm() 
     ko.applyBindings(VM);
+    ActiveAutocomplete(
+        "#search",
+        "http://192.168.160.58/Paris2024/api/Athletes/Search?q=",
+        "./AthletesDetails.html?id=",
+        "name",
+        "id"
+    );
 });
 
 

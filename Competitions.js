@@ -133,6 +133,13 @@ $(document).ready(function () {
     console.log("ready!");
 
     ko.applyBindings(new vm());
+    ActiveAutocomplete(
+        "#search",
+        "http://192.168.160.58/Paris2024/api/Competitions/Search?q=",
+        "./Competitions_details.html?id=",
+        "name",
+        "id"
+    );
 });
 
 

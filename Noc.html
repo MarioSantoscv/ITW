@@ -10,6 +10,21 @@
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link href="StyleSheet.css" rel="stylesheet" />
+    <style>
+        .CardBg {
+            box-shadow: -5px 5px 8px rgba(255, 0, 0, 0.2), 5px -5px 8px rgba(0, 0, 255, 0.2);
+        }
+
+            .CardBg:hover {
+                transform: scale(1.05);
+            }
+        .card-img-top {
+            height: 200px; /* Adjust height as needed */
+            object-fit: cover; /* Ensures the image fills the space while keeping aspect ratio */
+            width: 100%; /* Ensure it spans the width of the card */
+        }
+
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
@@ -55,7 +70,7 @@
                             <li><a class="dropdown-item " href="/Paris2024/Venues">Estádios | Espaços</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="/Paris2024/Medals_total">Medalheiro</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Medals">Medalhas atribuidas</a></li>
+                            <li><a class="dropdown-item " href="./Medals.html">Medalhas atribuidas</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="./Noc.html">Comités Olímpicos Nacionais</a></li>
                             <li><a class="dropdown-item " href="/Paris2024/Nationalities">Nacionalidades</a></li>
@@ -131,116 +146,105 @@
                     </div>
                     <!-- /ko -->
 
-
-                    <table class="table table-hover">
-                        <thead class="thead-dark ">
-                            <tr class="table-primary">
-                                <th scope="col">ID  </th>
-                                <th scope="col">Nome  </th>
-                                <th scope="col">Atletas  </th>
-                                <th scope="col">Treinadores  </th>
-                                <th scope="col">Times  </th>
-                                <th scope="col">Medalhas  </th>
-
-                                <th scope="col" class="text-right"></th>
-                            </tr>
-                        </thead>
-                        <tbody data-bind="foreach: athletes">
-                            <tr>
-                                <td scope="row" class="align-middle" data-bind="text:Id"></td>
-                                <td scope="row" class="align-middle" data-bind="text:Country"></td>
-                                <td scope="row" class="align-middle" data-bind="text:Athletes"></td>
-                                <td scope="row" class="align-middle" data-bind="text:Coaches"></td>
-                                <td scope="row" class="align-middle" data-bind="text:Teams"></td>
-                                <td scope="row" class="align-middle" data-bind="text:Medals"></td>
-                                <td scope="row" class="text-end">
-                                    <a class="cont" data-bind="attr: { href:'./Noc_details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
-                                    <a class="cont"
-                                       data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    <img src="/imagens/Paris2024.png" height="30" /> Loading data...
-                                </h5>
+                    <div class="row g-4 justify-content-center">
+                        <!-- ko foreach: athletes -->
+                        <div class="col-md-3 d-flex justify-content-center">
+                            <div class="card CardBg h-100" style="width: 18rem;">
+                                <img data-bind="attr: { src: Photo }" class="card-img-top" style="height: 200px; object-fit: cover;" />
+                                <div class="card-body d-flex flex-column align-items-center justify-content-between">
+                                    <h5 class="card-title text-center" data-bind="text: Country"></h5>
+                                    <div class="d-flex justify-content-center mt-auto">
+                                        <a class="cont mx-2" data-bind="attr: { href:'./Noc_details.html?id=' + Id }">
+                                            <i class="fa fa-eye" title="Show details"></i>
+                                        </a>
+                                        <a class="cont mx-2" data-bind="click: function(data, event) { swapFav(event.currentTarget, data); }">
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body text-center">
-                                <i class="fa fa-spin fa-3x fa-refresh"></i>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        <img src="/imagens/Paris2024.png" height="30" /> Loading data...
+                                    </h5>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <i class="fa fa-spin fa-3x fa-refresh"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal fade"
-                     id="exampleModal"
-                     tabindex="-1"
-                     role="dialog"
-                     aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title fw-bold" id="exampleModalLabel">
-                                    Favoritos
-                                </h5>
-                                <button type="button"
-                                        class="close b-0 bg-body-tertiary"
-                                        data-bs-dismiss="modal"
-                                        aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+                    <div class="modal fade"
+                         id="exampleModal"
+                         tabindex="-1"
+                         role="dialog"
+                         aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fw-bold" id="exampleModalLabel">
+                                        Favoritos
+                                    </h5>
+                                    <button type="button"
+                                            class="close b-0 bg-body-tertiary"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
 
-                            <!-- ko if: favList().length > 0-->
-                            <div class="modal-body col-12" data-bind="foreach: favList">
-                                <p class="lead col-12">
-                                    <a data-bind="attr: { href:'./Noc_details.html?id=' + Id }"></a>
+                                <!-- ko if: favList().length > 0-->
+                                <div class="modal-body col-12" data-bind="foreach: favList">
+                                    <p class="lead col-12">
+                                        <a data-bind="attr: { href:'./Noc_details.html?id=' + Id }"></a>
 
-                                    <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
-                                       class="fa fa-trash text-danger float-end"
-                                       aria-hidden="true"
-                                       data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
-                                </p>
-                                <br />
+                                        <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
+                                           class="fa fa-trash text-danger float-end"
+                                           aria-hidden="true"
+                                           data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
+                                    </p>
+                                    <br />
+                                </div>
+                                <!-- /ko -->
                             </div>
-                            <!-- /ko -->
                         </div>
                     </div>
+
+
+
+
+
+
+
+
+
                 </div>
-
-
-
-
-
-
-
-
-
-            </div>
-            <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-                <div class="container small">
-                    <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                    <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
-                    <div class="navbar-nav">
-                        <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+                <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+                    <div class="container small">
+                        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+                        <div class="navbar-nav">
+                            <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+                        </div>
                     </div>
-                </div>
-            </nav>
-            <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
-            <script src="../lib/jquery/dist/jquery.min.js"></script>
-            <script src="myJs.js"></script>
-            <script src="NOC.js"></script>
+                </nav>
+                <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+                <script src="../lib/jquery/dist/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+                <script src="myJs.js"></script>
+                <script src="NOC.js"></script>
 </body>
                   
 </html>

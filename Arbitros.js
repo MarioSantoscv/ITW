@@ -60,7 +60,7 @@ var vm = function () {
             self.hasPrevious(data.HasPrevious);
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
-            self.totalRecords(data.TotalTechnical_officials);
+            self.totalRecords(data.TotalOfficials);
             SetHearths(fav);
             //self.SetFavourites();
 
@@ -133,6 +133,13 @@ $(document).ready(function () {
     console.log("ready!");
 
     ko.applyBindings(new vm());
+    ActiveAutocomplete(
+        "#search",
+        "http://192.168.160.58/Paris2024/api/Technical_officials/Search?q=",
+        "./Arbitros_Details.html?id=",
+        "name",
+        "id"
+    );
 });
 
 

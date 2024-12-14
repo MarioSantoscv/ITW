@@ -90,27 +90,36 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                 <div class="col-md-6">
-                     <button type="button"
-                             class="btn btn-outline-danger"
-                             data-bs-toggle="modal"
-                             data-bs-target="#exampleModal">
-                         Favoritos
-                     </button>
-
-                 </div>
-                 <div class="col-md-6">
-                     <div class="input-group rounded">
-                         <input id="search"
-                                type="search"
-                                class="form-control autocomplete rounded"
-                                placeholder="Pesquisa"
-                                aria-label="Search"
-                                aria-describedby="search-addon" />
-                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                     </div>
-                 </div>
+            <div class="row align-items-center">
+                <div class="col-md-auto">
+                    <button type="button"
+                            class="btn btn-outline-danger"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                        Favoritos
+                    </button>
+                </div>
+                <div class="col-md-auto">
+                    <button class="btn btn-outline-primary" id="btnShowTable" onclick="toggleView('table')">
+                        <i class="fa fa-table"></i> 
+                    </button>
+                </div>
+                <div class="col-md-auto">
+                    <button class="btn btn-outline-primary" id="btnShowCards" onclick="toggleView('cards')">
+                        <i class="fa fa-th"></i> 
+                    </button>
+                </div>
+                <div class="col-md-auto ms-auto">
+                    <div class="input-group rounded">
+                        <input id="search"
+                               type="search"
+                               class="form-control autocomplete rounded"
+                               placeholder="Pesquisa"
+                               aria-label="Search"
+                               aria-describedby="search-addon" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
             </div>
             <!-- Working Area -->
             <!-- ko if:athletes().length > 0 -->
@@ -121,57 +130,78 @@
                 <div class="col-8 my-0 pt-3">
                     <ul class="pagination float-end">
                         <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                        <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './athletes.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                        <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './athletes.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                        <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './athletes - Copy.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                        <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './athletes - Copy.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
                         <!-- /ko -->
                         <!-- ko foreach: pageArray()-->
                         <!-- ko if:$data == $parent.currentPage() -->
                         <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
                         <!-- /ko -->
                         <!-- ko if:$data != $parent.currentPage() -->
-                        <li class="page-item"><a class="page-link" data-bind="attr: { href: './athletes.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
+                        <li class="page-item"><a class="page-link" data-bind="attr: { href: './athletes - Copy.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
                         <!-- /ko -->
                         <!-- /ko -->
                         <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                        <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './athletes.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                        <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './athletes.html?page=' + totalPages() }">⇥</a></li>
+                        <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './athletes - Copy.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                        <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './athletes - Copy.html?page=' + totalPages() }">⇥</a></li>
                         <!-- /ko -->
                     </ul>
                 </div>
             </div>
             <!-- /ko -->
 
-
-            <table class="table table-hover TableBg">
-                <thead class="thead-dark ">
-                    <tr class="table-primary">
-                        <th scope="col">Nome  </th>
-                        <th scope="col">Data Nascimento </th>
-                        <th scope="col">Nacionalidade</th>
-                        <th scope="col">Sexo</th>
-                        <th scope="col">Pais que representa</th>
-                        <th scope="col" class="text-right"></th>
-                    </tr>
-                </thead>
-                <tbody data-bind="foreach: athletes" id="place">
-                    <tr data-bind="attr: {id: Id}">
-                        <td scope="row" class="align-middle" data-bind="text:Name"></td>
-                        <td scope="row" class="align-middle" data-bind="text:BirthDate"></td>
-                        <td scope="row" class="align-middle" data-bind="text:BirthCountry"></td>
-                        <td scope="row" class="align-middle" data-bind="text:Sex"></td>
-                        <td scope="row" class="align-middle" data-bind="text:BirthCountry"></td>
-                        <td scope="row" class="bd text-end">
+            <div id="tableView">
+                <table class="table table-hover TableBg">
+                    <thead class="thead-dark ">
+                        <tr class="table-primary">
+                            <th scope="col">Nome  </th>
+                            <th scope="col">Data Nascimento </th>
+                            <th scope="col">Nacionalidade</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">Pais que representa</th>
+                            <th scope="col" class="text-right"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: athletes" id="place">
+                        <tr data-bind="attr: {id: Id}">
+                            <td scope="row" class="align-middle" data-bind="text:Name"></td>
+                            <td scope="row" class="align-middle" data-bind="text:BirthDate"></td>
+                            <td scope="row" class="align-middle" data-bind="text:BirthCountry"></td>
+                            <td scope="row" class="align-middle" data-bind="text:Sex"></td>
+                            <td scope="row" class="align-middle" data-bind="text:BirthCountry"></td>
+                            <td scope="row" class="bd text-end">
+                                <a class="cont" data-bind="attr: { href:'./AthletesDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
+                                <a class="cont"
+                                   data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
+                                    <i class="fa fa-heart-o akd" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!---->
+            <div id="cardsView" class="row row-cols-1 row-cols-md-4 g-4" data-bind="foreach: athletes"  >
+                <div class="col">
+                    <div class="card h-100 shadow-sm" id="place" data-bind="attr: {id: Id}">
+                        <img src="" class="card-img-top" id="img_jogadores" data-bind="attr: {src: Photo}" alt="Foto do atleta">
+                        <div class="card-body">
+                            <h5 class="card-title" data-bind="text: Name"></h5>
+                            
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
                             <a class="cont" data-bind="attr: { href:'./AthletesDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
                             <a class="cont"
                                data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
                                 <i class="fa fa-heart-o akd" aria-hidden="true"></i>
                             </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </div>
-                <!-- Modal -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content ModalBg">
@@ -238,7 +268,33 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
                 <script src="myJs.js"></script>
                 <script src="athletes.js"></script>
-
+                <script>
+                    function toggleView(view) {
+        if (view === 'table') {
+            document.getElementById('tableView').style.display = 'block';
+            document.getElementById('cardsView').style.display = 'none';
+            document.getElementById('btnShowTable').classList.add('active');
+            document.getElementById('btnShowCards').classList.remove('active');
+            localStorage.setItem('athleteView', 'table');
+        } else if (view === 'cards') {
+            document.getElementById('cardsView').style.display = 'flex';
+            document.getElementById('tableView').style.display = 'none';
+            document.getElementById('btnShowCards').classList.add('active');
+            document.getElementById('btnShowTable').classList.remove('active');
+            localStorage.setItem('athleteView', 'cards');
+        }
+                    }
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const savedView = localStorage.getItem('athleteView');
+                        if (savedView === 'table') {
+                            toggleView('table');
+                        } else if (savedView === 'cards') {
+                            toggleView('cards');
+                        } else {
+                            toggleView('table');
+                        }
+                    });
+                </script>
 
 </body>
 </html>

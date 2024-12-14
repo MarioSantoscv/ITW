@@ -65,3 +65,71 @@ main {
 .ui-menu-item:hover {
     background-color: #6b6868;
 }
+.modalImage {
+    width: 150px;
+    position: absolute;
+    margin-top:-80px;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    
+    
+}
+#exampleModal{
+    width:400px;
+    border-radius:6px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+.modal-header {
+    position: relative;
+    padding: 1rem;
+    border-bottom: none;
+}
+.modal-content {
+    position: relative;
+    border-radius: 6px;
+    padding-top: 50px;
+    overflow: visible;
+}
+.modal-dialog {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    position: relative;
+    border-radius: 6px;
+    padding-top: 50px;
+}
+.btn2 {
+    padding: 10px 60px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    border-radius: 30px;
+    background: darkred;
+}
+
+.TableBg {
+    box-shadow: -5px 5px 8px rgba(0, 133, 199, 0.2), 5px -5px 8px rgba(255, 215, 0, 0.2), -5px -5px 8px rgba(0, 0, 0, 0.2), 5px 5px 8px rgba(0, 166, 81, 0.2), -10px -10px 8px rgba(255, 76, 76, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+    
+.ModalBg {
+    box-shadow: -5px 5px 8px rgba(0, 133, 199, 0.2), 5px -5px 8px rgba(255, 215, 0, 0.2), -5px -5px 8px rgba(0, 0, 0, 0.2), 5px 5px 8px rgba(0, 166, 81, 0.2), -10px -10px 8px rgba(255, 76, 76, 0.2);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+   

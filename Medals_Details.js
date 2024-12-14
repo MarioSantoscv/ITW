@@ -3,41 +3,31 @@
 
     var self = this;
 
+
     self.baseUri = ko.observable('http://192.168.160.58/Paris2024/Api/Medals/');
     self.Id = ko.observable("Unavailable");
-    self.WinnerName = ko.observable("Unavailable");
-    self.SportId = ko.observable("Unavailable");
     self.MedalName = ko.observable("Unavailable");
-    self.Sex = ko.observable("Unavailable");
-    self.Competition = ko.observable("Unavailable");
+    self.WinnerId = ko.observable("Unavailable");
     self.CountryName = ko.observable("Unavailable");
+    self.WinnerName = ko.observable("Unavailable");
     self.Sport = ko.observable("Unavailable");
+    self.Competition = ko.observable("Unavailable");
+    self.Url_event = ko.observable("Unavailable");
 
-    
-    self.MedalImage = ko.computed(function () {
-        switch (self.MedalName().toLowerCase()) {
-            case "gold":
-                return "imagens/gold_medall.jpg"; 
-            case "silver":
-                return "imagens/silver_medal.jpg"; 
-            case "bronze":
-                return "imagens/Bronze_medal.jpeg"; 
-            default:
-                return null; 
-        }
-    });
+
 
     self.Text = ko.computed(function () {
         let txt =
-            "Desporto: " + self.Sport() + "<hr/>" +
-            "Nome do Vencedor: " + self.WinnerName() + "<hr/>" +
-            "Sex: " + self.Sex() + "<hr/>" +
-            "Competição: " + self.Competition() + "<hr/>" +
-            "Pais: " + self.CountryName() + "<hr/>" +
-            "Modalidade: " + self.Sport() + "<hr/>";
+            "CountryName: " + self.CountryName() + "<hr/>" +
+            "MedalName: " + self.MedalName() + "<hr/>" +
+            "WinnerName: " + self.WinnerName() + "<hr/>" +
+            "Sport: " + self.Sport() + "<hr/>" +
+            "Competition: " + self.Competition() + "<hr/>" +
+            "Url_event: " + self.Url_event() + "<hr/>";
 
         return txt;
     });
+
 
     self.active = function (id) {
         let composedUri = self.baseUri() + id;
@@ -51,13 +41,14 @@
             dataType: "json",
             success: function (data) {
                 self.Id(data.Id)
-                self.WinnerName(data.WinnerName);
-                self.Sex(data.Sex);
-                self.SportId(data.SportId);
                 self.MedalName(data.MedalName);
+                self.WinnerId(data.WinnerId);
+                self.Photo(data.Photo);
+                self.CountryName(data.CountryName);
+                self.WinnerName(data.WinnerName);
                 self.Sport(data.Sport);
                 self.Competition(data.Competition);
-                self.CountryName(data.CountryName);
+                self.Url_event(data.Url_event);
                 console.log(data);
             },
             error: function () {
@@ -82,8 +73,10 @@
 
     getPage();
 };
+
 $(document).ready(function () {
     console.log("document.ready!");
     ko.applyBindings(new vm());
 });
+
 

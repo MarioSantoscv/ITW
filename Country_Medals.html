@@ -125,7 +125,7 @@
                     <!-- /ko -->
 
 
-                    <table class="table table-hover">
+                    <table class="table table-hover TableBg">
                         <thead class="thead-dark ">
                             <tr class="table-primary">
                                 <th scope="col">Modalidade </th>
@@ -141,12 +141,12 @@
                         </thead>
                         <tbody data-bind="foreach: athletes">
                             <tr>
-                                <td scope="row" class="align-middle" data-bind="text:Sport"></td>
-                                <td scope="row" class="align-middle" data-bind="text:Competition"></td>
-                                <td scope="row" class="align-middle" data-bind="text:MedalName"></td>
-                                <td scope="row" class="align-middle" data-bind="text:Sex"></td>
-                                <td scope="row" class="align-middle" data-bind="text:WinnerName"></td>
                                 <td scope="row" class="align-middle" data-bind="text:CountryCode"></td>
+                                <td scope="row" class="align-middle" data-bind="text:CountryName"></td>
+                                <td scope="row" class="align-middle" data-bind="text:GoldMedal"></td>
+                                <td scope="row" class="align-middle" data-bind="text:SilverMedal"></td>
+                                <td scope="row" class="align-middle" data-bind="text:BronzeMedal"></td>
+                                <td scope="row" class="align-middle" data-bind="text:Total"></td>
 
                                 <td scope="row" class="text-end">
                                     <a class="cont" data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
@@ -156,7 +156,55 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content ModalBg">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                    <img src="/imagens/Paris2024.png" height="30" /> Loading data...
+                                </h5>
+                            </div>
+                            <div class="modal-body text-center">
+                                <i class="fa fa-spin fa-3x fa-refresh"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade"
+                     id="exampleModal"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content ModalBg">
+                            <div class="modal-header">
+                                <img class="modalImage" src="./heart.png" />
+                            </div>
 
+
+                            <!-- ko if: favList().length > 0-->
+                            <div class="modal-body col-12" data-bind="foreach: favList">
+                                <p class="lead col-12">
+                                    <a data-bind="attr: {href: './AthletesDetails.html?id=' + Id}, text: Name"></a>
+
+                                    <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
+                                       class="fa fa-trash text-danger float-end"
+                                       aria-hidden="true"
+                                       data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
+                                </p>
+                                <br />
+                            </div>
+                            <button type="button"
+                                    class="close b-0 bg-body-tertiary btn2"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">OK</span>
+                            </button>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
 
 
                 <!-- End of Working Area -->
@@ -174,7 +222,7 @@
                 <script src="../lib/jquery/dist/jquery.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
                 <script src="myJs.js"></script>
-                <script src="Medals.js"></script>
+                <script src="Country_medals.js"></script>
 
 </body>
 </html>

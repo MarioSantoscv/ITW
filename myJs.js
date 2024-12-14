@@ -334,3 +334,22 @@ function AutocompleteLst(Array, id, mode) {
         },
     });
 }
+
+    let targetElements = document.querySelectorAll(".digit-box");
+    let animationtiming = 3000;
+
+    targetElements.forEach((targetElement) => {
+        let valueOne = 0;
+    let valueTwo = parseInt(targetElement.getAttribute("data-val"));
+    let timing = Math.floor(animationtiming / valueTwo);
+
+    let counter = setInterval(function () {
+        valueOne += 1;
+    targetElement.textContent = valueOne;
+
+    if (valueOne == valueTwo) {
+        clearInterval(counter);
+            }
+        }, timing);
+    });
+

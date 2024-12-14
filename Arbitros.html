@@ -149,11 +149,11 @@
                                 <td scope="row" class="align-middle" data-bind="text:BirthDate"></td>
                                 <td scope="row" class="align-middle" data-bind="text:Sex"></td>
 
-                                <td scope="row" class="text-end">
+                                <td scope="row" class=" bd text-end">
                                     <a class="cont" data-bind="attr: { href:'./Arbitros_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
                                     <a class="cont"
                                        data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                        <i class="fa fa-heart-o akd" aria-hidden="true"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -198,7 +198,7 @@
                             <!-- ko if: favList().length > 0-->
                             <div class="modal-body col-12" data-bind="foreach: favList">
                                 <p class="lead col-12">
-                                    <a data-bind="attr: { href:'./Arbitros_Details.html?id=' + Id }"></a>
+                                    <a data-bind="attr: { href:'./Arbitros_Details.html?id=' + Id }, text: Name"></a>
 
                                     <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
                                        class="fa fa-trash text-danger float-end"

@@ -39,31 +39,26 @@
         return txt;
     });
 
-    self.active = function (id, name) {
-        let composedUri = self.baseUri() + "?sportId=" + id + "&competiton=" + competiton;
+    self.active = function (id) {
+        let composedUri = self.baseUri() + id;
         console.log("Accessing: " + composedUri);
-        self.SportId(id);
-        self.Competition(competiton);
+        self.Id(id);
+
 
         $.ajax({
             type: "GET",
             url: composedUri,
             dataType: "json",
             success: function (data) {
-                console.log("API Response:", data);
-
-                // Safely assign data to observables
-                self.SportId(data.SportId || "Unavailable");
-                self.Name(data.Name || "Unavailable");
-                self.Competition(data.Competition || "Unavailable")
-                self.SportInfo(data.SportInfo || []);
-                self.Photo(data.Photo || "Unavailable");
-                self.Tag(data.Tag || "Unavailable");
-
-                // Handle Athletes - ensure it's an array
-                self.Athletes(data.Athletes || []);
-
-                console.log("Athletes Data:", self.Athletes());
+                self.Id(data.Id)
+                self.WinnerName(data.WinnerName);
+                self.Sex(data.Sex);
+                self.SportId(data.SportId);
+                self.MedalName(data.MedalName);
+                self.Sport(data.Sport);
+                self.Competition(data.Competition);
+                self.CountryName(data.CountryName);
+                console.log(data);
             },
             error: function () {
                 console.error("Data not found!");
@@ -71,23 +66,22 @@
         });
     };
 
-    // Function to get URL parameters
+
     function getPage() {
         var currentUrl = String(window.location.search);
         let parameters = currentUrl.split("?")[1]?.split("&");
         if (parameters && parameters[0]) {
             let id = parameters[0].split("=")[1];
-            let name = parameters[1].split("=")[1];
             console.log("ID extracted from URL: " + id);
-            self.active(id, name);
+            self.active(id);
         } else {
             console.error("No ID found in the URL.");
         }
     }
 
+
     getPage();
 };
-
 $(document).ready(function () {
     console.log("document.ready!");
     ko.applyBindings(new vm());

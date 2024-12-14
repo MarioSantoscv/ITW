@@ -1,6 +1,6 @@
 ﻿let fav = [];
 let VM;
-let favtype = "favAthletes";
+let favType = "favMedalhas";
 
 var vm = function () {
     console.log('ViewModel initiated...');
@@ -143,7 +143,10 @@ var vm = function () {
 
 $(document).ready(function () {
     console.log("ready!");
-
+    if (localStorage.getItem(favType) != null) {
+        fav = JSON.parse(localStorage.getItem(favType));
+        console.log(fav)
+    }
     ko.applyBindings(new vm());
     viewModel = new vm();
     AutocompleteLst(viewModel.PlayersArray, "#search", "2");

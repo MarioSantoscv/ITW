@@ -1,6 +1,6 @@
 ﻿let fav = [];
 let VM;
-let favtype = "favCoaches"; // Updated for Coaches
+let favType = "favCoaches"; // Updated for Coaches
 
 var vm = function () {
     console.log('ViewModel initiated...');
@@ -49,6 +49,7 @@ var vm = function () {
             self.totalRecords(data.TotalCoaches);
             self.hasNext(data.HasNext);
             self.hasPrevious(data.HasPrevious);
+            SetHearths(fav);
         });
     };
 
@@ -82,8 +83,13 @@ function getUrlParameter(sParam) {
 // Apply Knockout bindings on page load
 $(document).ready(function () {
     console.log("ready!");
-
-    ko.applyBindings(new vm());
+    if (localStorage.getItem(favType) != null) {
+        fav = JSON.parse(localStorage.getItem(favType));
+        console.log(fav)
+    }
+    console.log("ready!");
+    VM = new vm() 
+    ko.applyBindings(VM);
     ActiveAutocomplete(
         "#search",
         "http://192.168.160.58/Paris2024/api/Coaches/Search?q=",

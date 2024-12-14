@@ -1,6 +1,6 @@
 ﻿let fav = [];
 let VM;
-let favtype = "favAthletes";
+let favType = "favNOC";
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
@@ -134,9 +134,13 @@ var vm = function () {
 };
 
 $(document).ready(function () {
+    if (localStorage.getItem(favType) != null) {
+        fav = JSON.parse(localStorage.getItem(favType));
+        console.log(fav)
+    }
     console.log("ready!");
-
-    ko.applyBindings(new vm());
+    VM = new vm()
+    ko.applyBindings(VM);
     ActiveAutocomplete(
         "#search",
         "http://192.168.160.58/Paris2024/api/NOCs/Search?q=",

@@ -62,7 +62,7 @@ var vm = function () {
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalAhletes);
             self.Id(data.Id)
-            console.log(fav)
+            //console.log(fav)
             SetHearths(fav);
             //self.SetFavourites();
 
@@ -134,6 +134,7 @@ var vm = function () {
 $(document).ready(function () {
     if (localStorage.getItem(favType) != null) {
         fav = JSON.parse(localStorage.getItem(favType));
+        console.log(fav)
     }
     console.log("ready!");
     VM = new vm() 

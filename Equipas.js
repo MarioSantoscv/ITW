@@ -1,7 +1,7 @@
 ﻿
 let fav = [];
 let VM;
-let favtype = "favAthletes";
+let favType = "favTeams";
 
 
 var vm = function () {
@@ -132,7 +132,10 @@ var vm = function () {
 
 $(document).ready(function () {
     console.log("ready!");
-
+    if (localStorage.getItem(favType) != null) {
+        fav = JSON.parse(localStorage.getItem(favType));
+        console.log(fav)
+    }
     ko.applyBindings(new vm());
     ActiveAutocomplete(
         "#search",

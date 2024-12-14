@@ -80,9 +80,16 @@
             <div class="border-bottom pt-4 pb-2 mb-3">
                 <div class="row">
                     <div class=" col-md-8">
-                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Treinadores</h2>
+                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Arbitros</h2>
                     </div>
-
+                    <div class="col-md-6">
+                        <button type="button"
+                                class="btn btn-outline-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                            Favoritos
+                        </button>
+                    </div>
                     <div class="col-md-6">
                         <div class="input-group rounded">
                             <input id="search"
@@ -139,8 +146,8 @@
                                 <th scope="col" class="text-right"></th>
                             </tr>
                         </thead>
-                        <tbody data-bind="foreach: athletes">
-                            <tr>
+                        <tbody data-bind="foreach: athletes" id="place">
+                            <tr data-bind="attr: {id: Id}">
                                 <td scope="row" class="align-middle" data-bind="text:Sport"></td>
                                 <td scope="row" class="align-middle" data-bind="text:Competition"></td>
                                 <td scope="row" class="align-middle" data-bind="text:MedalName"></td>
@@ -148,13 +155,69 @@
                                 <td scope="row" class="align-middle" data-bind="text:WinnerName"></td>
                                 <td scope="row" class="align-middle" data-bind="text:CountryCode"></td>
 
-                                <td scope="row" class="text-end">
+                                <td scope="row" class=" bd text-end">
                                     <a class="cont" data-bind="attr: { href:'./Medals_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
+                                    <a class="cont"
+                                       data-bind="click: function(data, event) { swapFav( event.currentTarget, data); }">
+                                        <i class="fa fa-heart-o akd" aria-hidden="true"></i>
+                                    </a>
 
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                    <img src="/imagens/Paris2024.png" height="30" /> Loading data...
+                                </h5>
+                            </div>
+                            <div class="modal-body text-center">
+                                <i class="fa fa-spin fa-3x fa-refresh"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade"
+                     id="exampleModal"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title fw-bold" id="exampleModalLabel">
+                                    Favoritos
+                                </h5>
+                                <button type="button"
+                                        class="close b-0 bg-body-tertiary"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <!-- ko if: favList().length > 0-->
+                            <div class="modal-body col-12" data-bind="foreach: favList">
+                                <p class="lead col-12">
+                                    <a data-bind="attr: { href:'./Arbitros_Details.html?id=' + Id }, text: Name"></a>
+
+                                    <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
+                                       class="fa fa-trash text-danger float-end"
+                                       aria-hidden="true"
+                                       data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
+                                </p>
+                                <br />
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
                 </div>
 
 

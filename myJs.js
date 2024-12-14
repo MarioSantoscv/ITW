@@ -80,11 +80,12 @@ let SetHearths = function (list) {
         .children()
         .each((index, element) => {
             let dataId = element.id;
-
+ 
             list.forEach((item) => {
-                console.log(element)
                 if (item.Id == dataId) {
-                    let iElement = $(element).find(".cont .cont i");
+                    
+                    let iElement = $(element).find(".bd .cont i.akd");
+                    console.log(iElement)
                     iElement.removeClass("fa-heart-o");
                     iElement.addClass("fa-heart");
                     iElement.addClass("text-danger");
@@ -100,7 +101,7 @@ let removeFav = function (data, $currentTarget) {
         .each((index, element) => {
             console.log(data)
             if (element.id == data.Id) {
-                let iElement = $(element).find(".bd .cont i");
+                let iElement = $(element).find(".bd .cont i.akd");
                 iElement.removeClass("fa-heart");
                 iElement.removeClass("text-danger");
                 iElement.addClass("fa-heart-o");
@@ -114,7 +115,7 @@ let swapFav = function (element, data2,) {
     if (localStorage.getItem(favType) != null) {
         fav = JSON.parse(localStorage.getItem(favType));
     }
-    let heart = $(element).find("i");
+    let heart = $(element).find("i.akd");
 
     heart.toggleClass("text-danger");
     heart.toggleClass("fa-heart");

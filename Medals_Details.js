@@ -42,14 +42,7 @@
             success: function (data) {
                 self.Id(data.Id)
                 self.MedalName(data.MedalName);
-                self.WinnerId(data.WinnerId);
-                self.Photo(data.Photo);
-                self.CountryName(data.CountryName);
-                self.WinnerName(data.WinnerName);
-                self.Sport(data.Sport);
-                self.Competition(data.Competition);
-                self.Url_event(data.Url_event);
-                console.log(data);
+                
             },
             error: function () {
                 console.error("Data not found!");

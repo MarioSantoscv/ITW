@@ -1,0 +1,821 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2024/25 - Paris 2024 Venues</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <!--Leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            crossorigin=""></script>
+    <style>
+        .bannerTop {
+            background-image: url('../Images/banner1.png');
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        i {
+            text-decoration: none;
+            color: gray;
+        }
+
+        #map {
+            height: 480px;
+            margin: 20px 0;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: transparent;
+            
+        }
+
+        {
+            --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+            --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+            --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+            --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+            --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+            --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+            --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+            --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+            --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";
+            --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";
+            --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone"
+        }
+
+        svg:not(:host).svg-inline--fa, svg:not(:root).svg-inline--fa {
+            overflow: visible;
+            box-sizing: content-box
+        }
+
+        .svg-inline--fa {
+            display: var(--fa-display,inline-block);
+            height: 1em;
+            overflow: visible;
+            vertical-align: -.125em
+        }
+
+            .svg-inline--fa.fa-2xs {
+                vertical-align: .1em
+            }
+
+            .svg-inline--fa.fa-xs {
+                vertical-align: 0
+            }
+
+            .svg-inline--fa.fa-sm {
+                vertical-align: -.0714285705em
+            }
+
+            .svg-inline--fa.fa-lg {
+                vertical-align: -.2em
+            }
+
+            .svg-inline--fa.fa-xl {
+                vertical-align: -.25em
+            }
+
+            .svg-inline--fa.fa-2xl {
+                vertical-align: -.3125em
+            }
+
+            .svg-inline--fa.fa-pull-left {
+                margin-right: var(--fa-pull-margin,.3em);
+                width: auto
+            }
+
+            .svg-inline--fa.fa-pull-right {
+                margin-left: var(--fa-pull-margin,.3em);
+                width: auto
+            }
+
+            .svg-inline--fa.fa-li {
+                width: var(--fa-li-width,2em);
+                top: .25em
+            }
+
+            .svg-inline--fa.fa-fw {
+                width: var(--fa-fw-width,1.25em)
+            }
+
+        .fa-layers svg.svg-inline--fa {
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .fa-layers-counter, .fa-layers-text {
+            display: inline-block;
+            position: absolute;
+            text-align: center
+        }
+
+        .fa-layers {
+            display: inline-block;
+            height: 1em;
+            position: relative;
+            text-align: center;
+            vertical-align: -.125em;
+            width: 1em
+        }
+
+            .fa-layers svg.svg-inline--fa {
+                transform-origin: center center
+            }
+
+        .fa-layers-text {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            transform-origin: center center
+        }
+
+        .fa-layers-counter {
+            background-color: var(--fa-counter-background-color,#ff253a);
+            border-radius: var(--fa-counter-border-radius,1em);
+            box-sizing: border-box;
+            color: var(--fa-inverse,#fff);
+            line-height: var(--fa-counter-line-height,1);
+            max-width: var(--fa-counter-max-width,5em);
+            min-width: var(--fa-counter-min-width,1.5em);
+            overflow: hidden;
+            padding: var(--fa-counter-padding,.25em .5em);
+            right: var(--fa-right,0);
+            text-overflow: ellipsis;
+            top: var(--fa-top,0);
+            transform: scale(var(--fa-counter-scale,.25));
+            transform-origin: top right
+        }
+
+        .fa-layers-bottom-right {
+            bottom: var(--fa-bottom,0);
+            right: var(--fa-right,0);
+            top: auto;
+            transform: scale(var(--fa-layers-scale,.25));
+            transform-origin: bottom right
+        }
+
+        .fa-layers-bottom-left {
+            bottom: var(--fa-bottom,0);
+            left: var(--fa-left,0);
+            right: auto;
+            top: auto;
+            transform: scale(var(--fa-layers-scale,.25));
+            transform-origin: bottom left
+        }
+
+        .fa-layers-top-right {
+            top: var(--fa-top,0);
+            right: var(--fa-right,0);
+            transform: scale(var(--fa-layers-scale,.25));
+            transform-origin: top right
+        }
+
+        .fa-layers-top-left {
+            left: var(--fa-left,0);
+            right: auto;
+            top: var(--fa-top,0);
+            transform: scale(var(--fa-layers-scale,.25));
+            transform-origin: top left
+        }
+
+        .fa-1x {
+            font-size: 1em
+        }
+
+        .fa-2x {
+            font-size: 2em
+        }
+
+        .fa-3x {
+            font-size: 3em
+        }
+
+        .fa-4x {
+            font-size: 4em
+        }
+
+        .fa-5x {
+            font-size: 5em
+        }
+
+        .fa-6x {
+            font-size: 6em
+        }
+
+        .fa-7x {
+            font-size: 7em
+        }
+
+        .fa-8x {
+            font-size: 8em
+        }
+
+        .fa-9x {
+            font-size: 9em
+        }
+
+        .fa-10x {
+            font-size: 10em
+        }
+
+        .fa-2xs {
+            font-size: .625em;
+            line-height: .1em;
+            vertical-align: .225em
+        }
+
+        .fa-xs {
+            font-size: .75em;
+            line-height: .0833333337em;
+            vertical-align: .125em
+        }
+
+        .fa-sm {
+            font-size: .875em;
+            line-height: .0714285718em;
+            vertical-align: .0535714295em
+        }
+
+        .fa-lg {
+            font-size: 1.25em;
+            line-height: .05em;
+            vertical-align: -.075em
+        }
+
+        .fa-xl {
+            font-size: 1.5em;
+            line-height: .0416666682em;
+            vertical-align: -.125em
+        }
+
+        .fa-2xl {
+            font-size: 2em;
+            line-height: .03125em;
+            vertical-align: -.1875em
+        }
+
+        .fa-fw {
+            text-align: center;
+            width: 1.25em
+        }
+
+        .fa-ul {
+            list-style-type: none;
+            margin-left: var(--fa-li-margin,2.5em);
+            padding-left: 0
+        }
+
+            .fa-ul > li {
+                position: relative
+            }
+
+        .fa-li {
+            left: calc(-1 * var(--fa-li-width,2em));
+            position: absolute;
+            text-align: center;
+            width: var(--fa-li-width,2em);
+            line-height: inherit
+        }
+
+        .fa-border {
+            border-color: var(--fa-border-color,#eee);
+            border-radius: var(--fa-border-radius,.1em);
+            border-style: var(--fa-border-style,solid);
+            border-width: var(--fa-border-width,.08em);
+            padding: var(--fa-border-padding,.2em .25em .15em)
+        }
+
+        .fa-pull-left {
+            float: left;
+            margin-right: var(--fa-pull-margin,.3em)
+        }
+
+        .fa-pull-right {
+            float: right;
+            margin-left: var(--fa-pull-margin,.3em)
+        }
+
+        .fa-beat {
+            animation-name: fa-beat;
+            animation-delay: var(--fa-animation-delay,0s);
+            animation-direction: var(--fa-animation-direction,normal);
+            animation-duration: var(--fa-animation-duration,1s);
+            animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+            animation-timing-function: var(--fa-animation-timing,ease-in-out)
+        }
+
+        .fa-bounce {
+            animation-name: fa-bounce;
+            animation-delay: var(--fa-animation-delay,0s);
+            animation-direction: var(--fa-animation-direction,normal);
+            animation-duration: var(--fa-animation-duration,1s);
+            animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+            animation-timing-function: var(--fa-animation-timing,cubic-bezier(.28,.84,.42,1))
+        }
+
+        .fa-fade {
+            animation-name: fa-fade;
+            animation-delay: var(--fa-animation-delay,0s);
+            animation-direction: var(--fa-animation-direction,normal);
+            animation-duration: var(--fa-animation-duration,1s);
+            animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+            animation-timing-function: var(--fa-animation-timing,cubic-bezier(.4,0,.6,1))
+        }
+
+        .fa-beat-fade {
+            animation-name: fa-beat-fade;
+            animation-delay: var(--fa-animation-delay,0s);
+            animation-direction: var(--fa-animation-direction,normal);
+            animation-duration: var(--fa-animation-duration,1s);
+            animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+            animation-timing-function: var(--fa-animation-timing,cubic-bezier(.4,0,.6,1))
+        }
+
+        .fa-flip {
+            animation-name: fa-flip;
+            animation-delay: var(--fa-animation-delay,0s);
+            animation-direction: var(--fa-animation-direction,normal);
+            animation-duration: var(--fa-animation-duration,1s);
+            animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+            animation-timing-function: var(--fa-animation-timing,ease-in-out)
+        }
+
+        .fa-shake {
+            animation-name: fa-shake;
+            animation-delay: var(--fa-animation-delay,0s);
+            animation-direction: var(--fa-animation-direction,normal);
+            animation-duration: var(--fa-animation-duration,1s);
+            animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+            animation-timing-function: var(--fa-animation-timing,linear)
+        }
+
+        .fa-spin {
+            animation-name: fa-spin;
+            animation-delay: var(--fa-animation-delay,0s);
+            animation-direction: var(--fa-animation-direction,normal);
+            animation-duration: var(--fa-animation-duration,2s);
+            animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+            animation-timing-function: var(--fa-animation-timing,linear)
+        }
+
+        .fa-spin-reverse {
+            --fa-animation-direction: reverse
+        }
+
+        .fa-pulse, .fa-spin-pulse {
+            animation-name: fa-spin;
+            animation-direction: var(--fa-animation-direction,normal);
+            animation-duration: var(--fa-animation-duration,1s);
+            animation-iteration-count: var(--fa-animation-iteration-count,infinite);
+            animation-timing-function: var(--fa-animation-timing,steps(8))
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .fa-beat, .fa-beat-fade, .fa-bounce, .fa-fade, .fa-flip, .fa-pulse, .fa-shake, .fa-spin, .fa-spin-pulse {
+                animation-delay: -1ms;
+                animation-duration: 1ms;
+                animation-iteration-count: 1;
+                transition-delay: 0s;
+                transition-duration: 0s
+            }
+        }
+
+        @keyframes fa-beat {
+            0%,90% {
+                transform: scale(1)
+            }
+
+            45% {
+                transform: scale(var(--fa-beat-scale,1.25))
+            }
+        }
+
+        @keyframes fa-bounce {
+            0% {
+                transform: scale(1,1) translateY(0)
+            }
+
+            10% {
+                transform: scale(var(--fa-bounce-start-scale-x,1.1),var(--fa-bounce-start-scale-y,.9)) translateY(0)
+            }
+
+            30% {
+                transform: scale(var(--fa-bounce-jump-scale-x,.9),var(--fa-bounce-jump-scale-y,1.1)) translateY(var(--fa-bounce-height,-.5em))
+            }
+
+            50% {
+                transform: scale(var(--fa-bounce-land-scale-x,1.05),var(--fa-bounce-land-scale-y,.95)) translateY(0)
+            }
+
+            57% {
+                transform: scale(1,1) translateY(var(--fa-bounce-rebound,-.125em))
+            }
+
+            64% {
+                transform: scale(1,1) translateY(0)
+            }
+
+            100% {
+                transform: scale(1,1) translateY(0)
+            }
+        }
+
+        @keyframes fa-fade {
+            50% {
+                opacity: var(--fa-fade-opacity,.4)
+            }
+        }
+
+        @keyframes fa-beat-fade {
+            0%,100% {
+                opacity: var(--fa-beat-fade-opacity,.4);
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(var(--fa-beat-fade-scale,1.125))
+            }
+        }
+
+        @keyframes fa-flip {
+            50% {
+                transform: rotate3d(var(--fa-flip-x,0),var(--fa-flip-y,1),var(--fa-flip-z,0),var(--fa-flip-angle,-180deg))
+            }
+        }
+
+        @keyframes fa-shake {
+            0% {
+                transform: rotate(-15deg)
+            }
+
+            4% {
+                transform: rotate(15deg)
+            }
+
+            24%,8% {
+                transform: rotate(-18deg)
+            }
+
+            12%,28% {
+                transform: rotate(18deg)
+            }
+
+            16% {
+                transform: rotate(-22deg)
+            }
+
+            20% {
+                transform: rotate(22deg)
+            }
+
+            32% {
+                transform: rotate(-12deg)
+            }
+
+            36% {
+                transform: rotate(12deg)
+            }
+
+            100%,40% {
+                transform: rotate(0)
+            }
+        }
+
+        @keyframes fa-spin {
+            0% {
+                transform: rotate(0)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .fa-rotate-90 {
+            transform: rotate(90deg)
+        }
+
+        .fa-rotate-180 {
+            transform: rotate(180deg)
+        }
+
+        .fa-rotate-270 {
+            transform: rotate(270deg)
+        }
+
+        .fa-flip-horizontal {
+            transform: scale(-1,1)
+        }
+
+        .fa-flip-vertical {
+            transform: scale(1,-1)
+        }
+
+        .fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
+            transform: scale(-1,-1)
+        }
+
+        .fa-rotate-by {
+            transform: rotate(var(--fa-rotate-angle,0))
+        }
+
+        .fa-stack {
+            display: inline-block;
+            vertical-align: middle;
+            height: 2em;
+            position: relative;
+            width: 2.5em
+        }
+
+        .fa-stack-1x, .fa-stack-2x {
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: var(--fa-stack-z-index,auto)
+        }
+
+        .svg-inline--fa.fa-stack-1x {
+            height: 1em;
+            width: 1.25em
+        }
+
+        .svg-inline--fa.fa-stack-2x {
+            height: 2em;
+            width: 2.5em
+        }
+
+        .fa-inverse {
+            color: var(--fa-inverse,#fff)
+        }
+
+        .fa-sr-only, .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border-width: 0
+        }
+
+        .fa-sr-only-focusable:not(:focus), .sr-only-focusable:not(:focus) {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border-width: 0
+        }
+
+        .svg-inline--fa .fa-primary {
+            fill: var(--fa-primary-color,currentColor);
+            opacity: var(--fa-primary-opacity,1)
+        }
+
+        .svg-inline--fa .fa-secondary {
+            fill: var(--fa-secondary-color,currentColor);
+            opacity: var(--fa-secondary-opacity,.4)
+        }
+
+        .svg-inline--fa.fa-swap-opacity .fa-primary {
+            opacity: var(--fa-secondary-opacity,.4)
+        }
+
+        .svg-inline--fa.fa-swap-opacity .fa-secondary {
+            opacity: var(--fa-primary-opacity,1)
+        }
+
+        .svg-inline--fa mask .fa-primary, .svg-inline--fa mask .fa-secondary {
+            fill: #000
+        }
+
+        .fa-duotone.fa-inverse, .fad.fa-inverse {
+            color: var(--fa-inverse,#fff)
+        }
+
+        #map {
+            height: 400px
+        }
+
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
+        <div class="container-xl">
+            <a href="index.html" class="navbar-brand p-0"><img src="/Paris2024/Images/Paris2024.png" height="35" /></a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-md-inline-flex justify-content-between">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li><a class="nav-link" href="Quiz.html"><i class="fa fa-gamepad" aria-hidden="true"></i> Quiz Game</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tabelas principais</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="athletes.html">Atletas</a></li>
+                            <li><a class="dropdown-item " href="Coaches.html">Treinadores</a></li>
+                            <li><a class="dropdown-item " href="Arbitros.html">Delegados | Árbitros</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="Teams.html">Equipas</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="modalidades.html">Modalidades</a></li>
+                            <li><a class="dropdown-item " href="Competicoes.html">Competições</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Torneios</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="Athletics.html">Atletismo</a></li>
+                            <li><a class="dropdown-item " href="Basketballs.html">Basquetebol</a></li>
+                            <li><a class="dropdown-item " href="Canoe_Sprints.html">Canoagem de velocidade</a></li>
+                            <li><a class="dropdown-item " href="Cycling_Tracks.html">Ciclismo de pista</a></li>
+                            <li><a class="dropdown-item " href="Footballs.html">Futebol</a></li>
+                            <li><a class="dropdown-item " href="Swimmings.html">Natação</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs text-success" aria-hidden="true"></i> Outras</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="torch.html">Tocha olímpica</a></li>
+                            <li><a class="dropdown-item " href="Estadios.html">Estádios | Espaços</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="medalheiro.html">Medalheiro</a></li>
+                            <li><a class="dropdown-item " href="medalhas.html">Medalhas atribuidas</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item " href="Comites.html">Comités Olímpicos Nacionais</a></li>
+                            <li><a class="dropdown-item " href="Nacionalidades.html">Nacionalidades</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link" href="Contato.html"><i class="fa fa-id-badge" aria-hidden="true"></i> Contato</a></li>
+                </ul>
+                <ul class="navbar-nav justify-content-end" id="bd-theme">
+                    <li><a class="nav-link" href="help.html"><i class="fa fa-question-circle-o text-danger" aria-hidden="true"></i> Help</a></li>
+                    <li class="navbar-text hstack"><div class="vr"></div></li>
+                    <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="light" aria-pressed="false"><i class="theme-icon fa fa-sun-o" title="Modo claro"></i></div></li>
+
+                    <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="dark" aria-pressed="false"><i class="theme-icon fa fa-moon-o" title="Modo escuro"></i></div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid bannerTop">
+        <!--Mapa -->
+        <div id="map" style="margin-top: 20px; height: 480px; margin: 0px; padding: 0px; background-position: center center; background-size: cover; background-repeat: no-repeat; margin-bottom: 20px; background: transparent; border: 1px solid #ccc"></div>
+    </div>
+
+
+    <div class="container-xl">
+        <main role="main" class="pb-3">
+            <!-- Title Section -->
+            <div class="border-bottom pt-4 pb-2 mb-3">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Estadios</h2>
+                    </div>
+                </div>
+                <!-- Counter Section -->
+                <div class="row mt-3">
+                    <div class="col-md-12 text-center">
+                        <h3>Número de Estadios: <span class="digit-box" data-val="35">0</span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button"
+                            class="btn btn-outline-danger"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                        Favoritos
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group rounded">
+                        <input id="search"
+                               type="search"
+                               class="form-control autocomplete rounded"
+                               placeholder="Pesquisa"
+                               aria-label="Search"
+                               aria-describedby="search-addon" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <main class="container-lg">
+                <h2> Estádios | Espaços desportivos</h2>
+                <table class="table table-hover TableBg">
+                    <thead class="thead-dark">
+                        <tr class="table-primary">
+                            <th scope="col">Nome</th>
+                            <th scope="col">Data Nascimento</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col" class="text-right"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: records" id="place">
+                        <tr data-bind="attr: {id: Id}">
+                            <td scope="row" class="align-middle" data-bind="text:Name"></td>
+                            <td scope="row" class="align-middle" data-bind="text:NumSports"></td>
+                            <td scope="row" class="align-middle" data-bind="text:DateStart"></td>
+
+                            <td scope="row" class="bd text-end">
+                                <a class="cont" data-bind="attr: { href:'./Estadios_details.html?id=' + Id }">
+                                    <i class="fa fa-eye" title="Show details"></i>
+                                </a>
+                                <a class="cont"
+                                   data-bind="click: function(data, event) { swapFav(event.currentTarget, data); }">
+                                    <i class="fa fa-heart-o akd" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
+            <div class="modal fade"
+                 id="exampleModal"
+                 tabindex="-1"
+                 role="dialog"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content ModalBg">
+                        <div class="modal-header">
+                            <img class="modalImage" src="./heart.png" />
+                        </div>
+
+
+                        <!-- ko if: favList().length > 0-->
+                        <div class="modal-body col-12" data-bind="foreach: favList">
+                            <p class="lead col-12">
+                                <a data-bind="attr: { href:'./Estadios_details.html?id=' + Id }, text: Name"></a>
+
+                                <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
+                                   class="fa fa-trash text-danger float-end"
+                                   aria-hidden="true"
+                                   data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
+                            </p>
+                            <br />
+                        </div>
+                        <button type="button"
+                                class="close b-0 bg-body-tertiary btn2"
+                                data-bs-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">OK</span>
+                        </button>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+
+                <!-- End of Work Area -->
+                <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+                    <div class="container small">
+                        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+
+                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by <a href="mailto:kelvin.loforte@ua.pt" class="text-decoration-none text-muted">kelvin.loforte@ua.pt</a>.</div>
+                        <div class="navbar-nav">
+                            <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+                        </div>
+                    </div>
+                </nav>
+
+                <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+                <script src="../lib/jquery/dist/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+                <script src="myJs.js"></script>
+                <script src="Estadios.js"></script>
+</body>
+</html>

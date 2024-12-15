@@ -102,13 +102,13 @@
             <div class="border-bottom pt-4 pb-2 mb-3">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Equipas</h2>
+                        <h2><i class="text-danger fa fa-user-o"></i> Lista de NOC's</h2>
                     </div>
                 </div>
                 <!-- Counter Section -->
                 <div class="row mt-3">
                     <div class="col-md-12 text-center">
-                        <h3>Número de Equipas: <span class="digit-box" data-val="224">0</span></h3>
+                        <h3>Número de NOC's: <span class="digit-box" data-val="206">0</span></h3>
                     </div>
                 </div>
             </div>
@@ -132,146 +132,189 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <h3 class="mb-3">Nações por Edições Olimpicas</h3>
+                    <canvas id="myChart" width="400" height="70"></canvas>
                 </div>
-                <!-- Working Area -->
-                <!-- ko if:athletes().length > 0 -->
-                <div class="row small">
-                    <p class=" col-4 mr-auto pt-2">
-                        <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-                        
-                    </p>
-                    <div class="col-8 my-0 pt-3">
-                        <ul class="pagination float-end">
-                            <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                            <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Noc.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                            <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Noc.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
-                            <!-- /ko -->
-                            <!-- ko foreach: pageArray()-->
-                            <!-- ko if:$data == $parent.currentPage() -->
-                            <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
-                            <!-- /ko -->
-                            <!-- ko if:$data != $parent.currentPage() -->
-                            <li class="page-item"><a class="page-link" data-bind="attr: { href: './Noc.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
-                            <!-- /ko -->
-                            <!-- /ko -->
-                            <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                            <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Noc.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                            <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Noc.html?page=' + totalPages() }">⇥</a></li>
-                            <!-- /ko -->
-                        </ul>
+            </div>
+            <!-- Working Area -->
+            <!-- ko if:athletes().length > 0 -->
+            <div class="row small">
+                <p class=" col-4 mr-auto pt-2">
+                    <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
+
+                </p>
+                <div class="col-8 my-0 pt-3">
+                    <ul class="pagination float-end">
+                        <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                        <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Noc.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                        <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Noc.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                        <!-- /ko -->
+                        <!-- ko foreach: pageArray()-->
+                        <!-- ko if:$data == $parent.currentPage() -->
+                        <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
+                        <!-- /ko -->
+                        <!-- ko if:$data != $parent.currentPage() -->
+                        <li class="page-item"><a class="page-link" data-bind="attr: { href: './Noc.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
+                        <!-- /ko -->
+                        <!-- /ko -->
+                        <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                        <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Noc.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                        <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Noc.html?page=' + totalPages() }">⇥</a></li>
+                        <!-- /ko -->
+                    </ul>
+                </div>
+            </div>
+            <!-- /ko -->
+
+            <div class="row g-4 justify-content-center" id="place">
+                <!-- ko foreach: athletes -->
+
+                <div class="col-md-3 d-flex justify-content-center" data-bind="attr: {id: Id}">
+                    <div class="card CardBg h-100"
+                         style="width: 18rem;">
+                        <img data-bind="attr: { src: Photo }"
+                             class="card-img-top"
+                             style="height: 200px;
+                                     object-fit: cover;" />
+                        <div class=" bd card-body d-flex flex-column align-items-center justify-content-between">
+                            <h5 class="card-title text-center"
+                                data-bind="text: Country">
+                            </h5>
+                            <div class=" bd d-flex justify-content-center mt-auto">
+                                <a class="cont mx-2"
+                                   data-bind="attr: { href:'./Noc_details.html?id=' + Id }">
+                                    <i class="fa fa-eye" title="Show details"></i>
+                                </a>
+                                <a class="cont mx-2" data-bind="click: function(data, event) { swapFav(event.currentTarget, data); }">
+                                    <i class="fa fa-heart-o akd"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /ko -->
+            </div>
 
-                <div class="row g-4 justify-content-center" id="place">
-                    <!-- ko foreach: athletes -->
 
-                    <div class="col-md-3 d-flex justify-content-center" data-bind="attr: {id: Id}">
-                        <div class="card CardBg h-100"
-                             style="width: 18rem;">
-                            <img data-bind="attr: { src: Photo }"
-                                 class="card-img-top"
-                                 style="height: 200px;
-                                     object-fit: cover;" />
-                            <div class=" bd card-body d-flex flex-column align-items-center justify-content-between">
-                                <h5 class="card-title text-center"
-                                    data-bind="text: Country">
-                                </h5>
-                                <div class=" bd d-flex justify-content-center mt-auto">
-                                    <a class="cont mx-2"
-                                       data-bind="attr: { href:'./Noc_details.html?id=' + Id }">
-                                        <i class="fa fa-eye" title="Show details"></i>
-                                    </a>
-                                    <a class="cont mx-2" data-bind="click: function(data, event) { swapFav(event.currentTarget, data); }">
-                                        <i class="fa fa-heart-o akd"></i>
-                                    </a>
-                                </div>
-                            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content ModalBg">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                <img src="/imagens/Paris2024.png" height="30" /> Loading data...
+                            </h5>
+                        </div>
+                        <div class="modal-body text-center">
+                            <i class="fa fa-spin fa-3x fa-refresh"></i>
                         </div>
                     </div>
-                    <!-- /ko -->
                 </div>
-
-
-
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+            </div>
+            <div class="container">
+                <div class="modal fade"
+                     id="exampleModal"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
                         <div class="modal-content ModalBg">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    <img src="/imagens/Paris2024.png" height="30" /> Loading data...
-                                </h5>
+                                <img class="modalImage" src="./heart.png" />
                             </div>
-                            <div class="modal-body text-center">
-                                <i class="fa fa-spin fa-3x fa-refresh"></i>
+
+
+                            <!-- ko if: favList().length > 0-->
+                            <div class="modal-body col-12" data-bind="foreach: favList">
+                                <p class="lead col-12">
+                                    <a data-bind="attr: { href:'./Noc_details.html?id=' + Id }, text:Country"></a>
+
+                                    <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
+                                       class="fa fa-trash text-danger float-end"
+                                       aria-hidden="true"
+                                       data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
+                                </p>
+                                <br />
+
                             </div>
+                            <button type="button"
+                                    class="close b-0 bg-body-tertiary btn2"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">OK</span>
+                            </button>
+                            <!-- /ko -->
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="modal fade"
-                         id="exampleModal"
-                         tabindex="-1"
-                         role="dialog"
-                         aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content ModalBg">
-                                <div class="modal-header">
-                                    <img class="modalImage" src="./heart.png" />
-                                </div>
-
-
-                                <!-- ko if: favList().length > 0-->
-                                <div class="modal-body col-12" data-bind="foreach: favList">
-                                    <p class="lead col-12">
-                                        <a data-bind="attr: { href:'./Noc_details.html?id=' + Id }, text:Country"></a>
-
-                                        <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
-                                           class="fa fa-trash text-danger float-end"
-                                           aria-hidden="true"
-                                           data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
-                                    </p>
-                                    <br />
-
-                                </div>
-                                <button type="button"
-                                        class="close b-0 bg-body-tertiary btn2"
-                                        data-bs-dismiss="modal"
-                                        aria-label="Close">
-                                    <span aria-hidden="true">OK</span>
-                                </button>
-                                <!-- /ko -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
             </div>
-            <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-                <div class="container small">
-                    <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                    <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
-                    <div class="navbar-nav">
-                        <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
-                    </div>
-                </div>
-            </nav>
-            <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
-            <script src="../lib/jquery/dist/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-            <script src="myJs.js"></script>
-            <script src="NOC.js"></script>
+
+
+
+
+
+
+
+
+
+    </div>
+    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+            integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA="
+            crossorigin="anonymous"></script>
+    <script src="myJs.js"></script>
+    <script src="NOC.js"></script>
+    <script>
+        $(document).ready(function () {
+            let customCounters = [72, 159, 64, 169, 67, 197, 72, 199, 78, 201, 80, 204, 82, 204, 88, 207, 93, 206, 91, 206];
+            let customNames = ["1988 Winter", "1988 Summer", "1992 Winter", "1992 Summer", "1994 Winter", "1996 Summer", "1998 Winter", "2000 Summer", "2002 Winter", "2004 Summer", "2006 Winter", "2008 Summer", "2010 Winter", "2012 Summer", "2014 Winter", "2016 Summer", "2018 Winter", "2020 Summer", "2022 Winter", "2024 Summer"]; // Example data for Olympic Games editions
+
+            createBarGraph(customCounters, customNames);
+
+            function createBarGraph(Counter, Name) {
+                let barChart = new Chart("myChart", {
+                    type: "bar",
+                    data: {
+                        labels: Name,
+                        datasets: [{
+                            data: Counter,
+                            label: 'Lista Numero Nações por Edição Olimpica ',
+                            backgroundColor: ["#0275d8", "#292b2c", "#d9534f", "#f0ad4e", "#5cb85c"]
+                        }]
+                    },
+                    options: {
+                        animations: {
+                            tension: {
+                                duration: 1000,
+                                easing: 'linear',
+                                from: 1,
+                                to: 0,
+                                loop: true
+                            }
+                        },
+                    }
+                });
+            }
+        });
+    </script>
 </body>
                   
 </html>

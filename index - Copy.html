@@ -29,7 +29,19 @@
             .timeline-item img {
                 border-radius: 5px;
             }
+
+       
+        .carousel-container {
+            -webkit-overflow-scrolling: touch;
+            overflow-x: scroll;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Hides the scrollbar for a cleaner look */
+        }
     </style>
+
+    
 </head>
 <body style="font-family: 'Inter', sans-serif;">
     <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom" style="height:90px; font-size:22px; text-align:center">
@@ -106,7 +118,7 @@
     </nav>
 
     <div class="container-fluid"></div>
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" >
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -158,22 +170,17 @@
 
     <!--AAAA-->
 
-
     <div class="container mt-5 ">
         <div class="row g-4 justify-content-center">
             <h1 style="font-size: 90px; font-family: Broadway; text-align:center;">Está interessado em... </h1>
 
-
             <div class="col-md-4" style="margin-top: 60px;">
                 <div class="card" style="border: none;">
                     <div class="card-body d-flex align-items-center">
-
                         <div class="mr-3" style="transform: rotate(-90deg); white-space: nowrap; font-size: 50px; font-weight: bold; text-align:left">
                             ATLETAS
                         </div>
-
                         <div>
-
                             <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Clique para mais informações sobre Atletas.">
                                 <a href="./athletes.html">
                                     <img src="/imagens/Paris2024.png" alt="Atletas" style="width: 150px; height: auto">
@@ -187,13 +194,10 @@
             <div class="col-md-4" style="margin-top: 60px;">
                 <div class="card" style="border: none;">
                     <div class="card-body d-flex align-items-center">
-
                         <div class="mr-3" style="transform: rotate(-90deg); white-space: nowrap; font-size: 50px; font-weight: bold; text-align:left">
                             NOC'S
                         </div>
-
                         <div>
-
                             <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Clique para mais informações sobre NOCs.">
                                 <a href="./Noc.html">
                                     <img src="/imagens/Paris2024.png" alt="NOC's" style="width: 150px; height: auto;">
@@ -204,17 +208,13 @@
                 </div>
             </div>
 
-
             <div class="col-md-4" style="margin-top: 60px;">
                 <div class="card" style="border: none;">
                     <div class="card-body d-flex align-items-center">
-
-                        <div class="mr-3" style="transform: rotate(-90deg); white-space: nowrap; font-size: 50px; font-weight: bold; text-align:left">
+                        <div class="mr-3" style="transform: rotate(-90deg); white-space: nowrap; font-size: 43px; font-weight: bold; text-align:left">
                             MEDALHAS
                         </div>
-
                         <div>
-
                             <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Clique para mais informações sobre os atletas Medalhados.">
                                 <a href="./Medals.html">
                                     <img src="/imagens/Paris2024.png" alt="Atletas" style="width: 150px; height: auto">
@@ -226,118 +226,116 @@
             </div>
         </div>
     </div>
+    
+    <div class="container mt-5" style="margin-top: 80px; margin-bottom: 50px; text-align:center">
+        <br />
+        <br />
+        <br />
+        <hr />
+        <br />
+        <br />
+        <br />
 
 
-    <div class="container mt-5">
-        <div class="timeline">
-            <div class="container mt-5">
-                <h3 class="text-center mb-4" style="font-size:55px; font-family:Broadway"><strong>Linha do Tempo dos Jogos Olímpicos</strong></h3>
-                <div id="timelineCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <!-- Indicadores do Carousel -->
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#timelineCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#timelineCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#timelineCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
+        <h2 style="font-size: 60px; font-family: 'Broadway'; margin-bottom: 40px;">Linha do Tempo dos Jogos Olímpicos</h2>
 
-                    <!-- Conteúdo do Carousel -->
-                    <div class="carousel-inner">
-                        <!-- Evento 1 -->
-                        <div class="carousel-item active">
-                            <div class="p-4 text-center border rounded bg-light TableBg">
-                                <h5 class="mb-1" style="color: black; font-family:Elephant; font-size:30px">Cerimônia de Abertura</h5>
-                                <p class="mb-1" style="color: black; font-family: 'Baskerville Old Face'; font-size: 24px">A magia dos Jogos começou com uma cerimônia emocionante na Torre Eiffel, marcada por apresentações culturais incríveis.</p>
-                                <small style="color: black;">26/07/2024</small>
-                                <img src="https://th.bing.com/th/id/R.6b132fcfe1e806df68b3827284c81dde?rik=Lnq9hoSe1gFN3g&pid=ImgRaw&r=04" alt="Cerimônia de Abertura" class="img-fluid mt-3 mb-3">
-                            </div>
-                        </div>
+        
+        <div class="carousel-container" id="carousel" style="overflow-x: auto; display: flex; gap: 20px; scroll-snap-type: x mandatory; padding: 20px; scroll-padding: 20px;">
 
-                        <!-- Evento 2 -->
-                        <div class="carousel-item">
-                            <div class="p-4 text-center border rounded bg-light TableBg">
-                                <h5 class="mb-1" style="color: black; font-family: Elephant; font-size: 30px">Final de Natação - 100m Livre</h5>
-                                <p class="mb-1" style="color: black; font-family: 'Baskerville Old Face'; font-size: 24px ">Recordes mundiais foram quebrados nesta final eletrizante que deixou o público de pé.</p>
-                                <small style="color: black; ">28/07/2024</small>
-                                <img src="https://img2.rtve.es/i/?w=1600&i=1311516210522.jpg" alt="Natação 100m Livre" class="img-fluid mt-3 mb-3">
-                            </div>
-                        </div>
 
-                        <!-- Evento 3 -->
-                        <div class="carousel-item">
-                            <div class="p-4 text-center border rounded bg-light TableBg">
-                                <h5 class="mb-1" style="color: black; font-family: Elephant; font-size: 30px ">Tocha Olímpica chega ao Stade de France</h5>
-                                <p class="mb-1" style="color: black; font-family: 'Baskerville Old Face'; font-size: 24px ">A tocha completa seu percurso histórico em uma cerimônia emocionante.</p>
-                                <small style="color: black; ">29/07/2024</small>
-                                <img src="https://seucreditodigital.com.br/wp-content/uploads/2023/05/tocha-olimpica-na-torre-eiffel.jpg" alt="Chegada da Tocha" class="img-fluid mt-3 mb-3" />
-                            </div>
-                        </div>
-                    </div>
+            <div class="card CardBg" style="width: 36rem; flex: 0 0 auto; scroll-snap-align: center; height: 760px; margin-bottom: 20px;">
+                <img src="https://th.bing.com/th/id/R.6b132fcfe1e806df68b3827284c81dde?rik=Lnq9hoSe1gFN3g&pid=ImgRaw&r=04" alt="Cerimônia de Abertura" class="card-img-top" style="height:400px">
+                <div class="card-body" style="text-align:center;">
+                    <h5 style="color: black; font-family: Elephant; font-size: 42px;">Cerimônia de Abertura</h5>
+                    <p style="color: black; font-family: 'Baskerville Old Face'; font-size: 28px;">A magia dos Jogos começou com uma cerimônia emocionante na Torre Eiffel.</p>
+                    
+                </div>
+            </div>
 
-                    <!-- Controles do Carousel -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#timelineCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#timelineCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Próximo</span>
-                    </button>
+            <div class="card CardBg" style="width: 36rem; flex: 0 0 auto; scroll-snap-align: center; height: 760px; margin-bottom: 20px;">
+                <img src="https://seucreditodigital.com.br/wp-content/uploads/2023/05/tocha-olimpica-na-torre-eiffel.jpg" alt="Tocha Olímpica chega ao Stade de France" class="card-img-top" style="height:400px">
+                <div class="card-body">
+                    <h5 style="color: black; font-family: Elephant; font-size: 42px;">Tocha Olímpica no Stade de France</h5>
+                    <p style="color: black; font-family: 'Baskerville Old Face'; font-size: 28px;">A tocha completa seu percurso histórico em uma cerimônia emocionante.</p>
+                    
+                </div>
+            </div>
+
+
+            <div class="card CardBg" style="width: 36rem; flex: 0 0 auto; scroll-snap-align: center; height: 760px; margin-bottom: 20px;">
+                <img src="https://img2.rtve.es/i/?w=1600&i=1311516210522.jpg" alt="Final de Natação - 100m Livre" class="card-img-top" style="height:400px">
+                <div class="card-body">
+                    <h5 style="color: black; font-family: Elephant; font-size: 42px;">Final de Natação - 100m Livre</h5>
+                    <p style="color: black; font-family: 'Baskerville Old Face'; font-size: 28px;">Recordes mundiais foram quebrados nesta final eletrizante.</p>
+                    
+                </div>
+            </div>
+
+
+
+            <div class="card CardBg" style="width: 36rem; flex: 0 0 auto; scroll-snap-align: center; height: 760px; margin-bottom: 20px;">
+                <img src="https://cdn.record.pt/images/2024-08/img_1280x720$2024_08_13_08_25_44_2284774.jpg" alt="David Pina" class="card-img-top" style="height:400px">
+                <div class="card-body">
+                    <h5 style="color: black; font-family: Elephant; font-size: 42px;">Cabo Verde vence a sua primeir Medalha</h5>
+                    <p style="color: black; font-family: 'Baskerville Old Face'; font-size: 28px;">David de Pina ganha o bronze em boxe</p>
+                    
+                </div>
+            </div>
+
+            <div class="card CardBg" style="width: 36rem; flex: 0 0 auto; scroll-snap-align: center; height: 760px; margin-bottom: 20px;">
+                <img src="https://mediaproxy.salon.com/width/1200/https://media2.salon.com/2024/08/simone-biles-olympics-2164225426jpg.jpg" alt="Final de Atletismo - 200m" class="card-img-top" style="height:400px">
+                <div class="card-body">
+                    <h5 style="color: black; font-family: Elephant; font-size: 42px;">Final histórica na ginástica</h5>
+                    <p style="color: black; font-family: 'Baskerville Old Face'; font-size: 28px;">Simone Biles, Rebeca Andrade e Suni Lee disputam medalhas no individual geral.</p>
+                    
+                </div>
+            </div>
+
+            <div class="card CardBg" style="width: 36rem; flex: 0 0 auto; scroll-snap-align: center; height: 760px; margin-bottom: 20px;">
+                <img src="https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/08/cerimonia-encerramento-paris-2024-1-e1723415595276.jpg?w=1113" alt="Final de Atletismo - 200m" class="card-img-top" style="height:400px">
+                <div class="card-body">
+                    <h5 style="color: black; font-family: Elephant; font-size: 42px;">Cerimônia de Encerramento</h5>
+                    <p style="color: black; font-family: 'Baskerville Old Face'; font-size: 28px;">Os Jogos foram encerrados com uma cerimônia espetacular no Stade de France.</p>
+                    
                 </div>
             </div>
         </div>
     </div>
 
-    <!--Notícias-->
-    <div class="container mt-5">
-        <h3 class="text-center mb-4" style="font-size:55px; font-family:Broadway"><strong>Últimas Notícias</strong></h3>
+    <!-- Seção de Notícias -->
+    <div class="container mt-5 mb-5">
+        <h3 class="text-center mb-4" style="font-size: 55px; font-family: Broadway;"><strong>Últimas Notícias</strong></h3>
 
-        <div class="list-group">
-            <!-- Primeira notícia com imagem e iframe -->
-            <div class="list-group-item TableBg">
-                <h5 class="mb-1" style=" font-family: Elephant; font-size: 30px; text-align:center ">Novos Recordes!<i class="fa fa-trophy" aria-hidden="true"></i></h5>
-
-                <!-- Iframe incorporando uma reportagem externa -->
-                <div class="embed-responsive embed-responsive-16by9 mt-3">
-                    <iframe src="https://www.cnnbrasil.com.br/esportes/olimpiadas/paris-2024-recordes-mundiais-quebrados/"
-                            width="100%" height="600" style="border:0;" loading="lazy">
-                    </iframe>
-                </div>
-
-                <!-- Link para o artigo completo -->
-                <div class="mt-3 text-center">
-                    <a href="https://www.cnnbrasil.com.br/esportes/olimpiadas/paris-2024-recordes-mundiais-quebrados/"
-                       class="btn btn-primary" target="_blank">Leia mais</a>
-                </div>
+        <!-- Notícias 1 -->
+        <div class="list-group-item TableBg mb-4" style="padding: 30px;">
+            <h5 class="mb-3" style="font-family: Elephant; font-size: 30px; text-align:center;">Novos Recordes!</h5>
+            <div class="embed-responsive embed-responsive-16by9 mt-3">
+                <iframe src="https://www.cnnbrasil.com.br/esportes/olimpiadas/paris-2024-recordes-mundiais-quebrados/" width="100%" height="600" style="border:0;" loading="lazy"></iframe>
             </div>
-
-            <!-- Segunda notícia com vídeo e imagem -->
-            <div class="list-group-item mt-4 TableBg">
-                <h5 class="mb-1" style="font-size:55px; font-family:Broadway; text-align:center">Cerimónia de Abertura encanta o mundo</h5>
-
-                <!-- Vídeo incorporado -->
-                <div class="embed-responsive embed-responsive-16by9 mt-3">
-                    <iframe width="100%" height="600" style="border:0;" allowfullscreen loading="lazy" src="https://www.youtube.com/embed/Qa6Z7A5Vs1I" title="Melhores Momentos da Cerimonia de Abertura  Jogos Olímpicos Paris2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-
-                <!-- Link para o artigo completo -->
-                <div class="mt-3 text-center">
-                    <a href="https://olympics.com/pt/noticias/cerimonia-de-abertura-paris-2024-tudo-o-que-voce-precisa-saber"
-                       class="btn btn-primary" target="_blank">Leia mais</a>
-                </div>
+            <div class="mt-3 text-center">
+                <a href="https://www.cnnbrasil.com.br/esportes/olimpiadas/paris-2024-recordes-mundiais-quebrados/" class="btn btn-primary" target="_blank">Leia mais</a>
             </div>
-
-            <!--Ultimas-->
-            <div>
-                <div class="mt-3 text-center TableBg">
-                    <h5 class="mb-1" style="font-size:55px; font-family:Broadway"><strong>Tocha Olímpica chega ao Stade de France</strong></h5>
-
-                    <iframe width="100%" height="700" src="https://www.youtube.com/embed/KIeHFbfSbCM" title="Tom Cruise abseils from the stadium roof, and rides off on a motorbike! | #Paris2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                    </iframe>
-                </div>
+        </div>
+        <div class="list-group-item mt-4 TableBg">
+            <h5 class="mb-1" style="font-size:55px; font-family: Broadway; text-align:center;">Cerimônia de Abertura Encanta o Mundo</h5>
+            <div class="embed-responsive embed-responsive-16by9 mt-3">
+                <iframe width="100%" height="600" style="border:0;" allowfullscreen loading="lazy" src="https://www.youtube.com/embed/Qa6Z7A5Vs1I" title="Melhores Momentos da Cerimonia de Abertura Jogos Olímpicos Paris2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <div class="mt-3 text-center">
+                <a href="https://olympics.com/pt/noticias/cerimonia-de-abertura-paris-2024-tudo-o-que-voce-precisa-saber" class="btn btn-primary" target="_blank">Leia mais</a>
+            </div>
+        </div>
+        <div class="list-group-item mt-4 TableBg">
+            <h5 class="mb-1" style="font-size:55px; font-family: Broadway; text-align:center;"><strong>Tocha Olímpica chega ao Stade de France</strong></h5>
+            <div class="embed-responsive embed-responsive-16by9 mt-3">
+                <iframe width="100%" height="700" src="https://www.youtube.com/embed/KIeHFbfSbCM" title="Tom Cruise abseils from the stadium roof, and rides off on a motorbike! | #Paris2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </div>
-    </div>
+
+    
+
+
 
 
 
@@ -353,7 +351,7 @@
     </footer>
 
 
-    <!--Navbar como rodapé-->
+
     <nav class="navbar fixed-bottom bg-body-tertiary border-top">
         <div class="container small">
             <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
@@ -379,5 +377,40 @@
         });
     </script>
 
+    <script>
+
+        const carousel = document.getElementById('carousel');
+
+        let currentIndex = 0;
+        const totalCards = carousel.children.length;
+
+
+        function scrollToNextCard() {
+            currentIndex++;
+            if (currentIndex >= totalCards) {
+                currentIndex = 0;
+                carousel.classList.add('reset-scroll');
+                setTimeout(() => {
+                    carousel.classList.remove('reset-scroll');
+                }, 300);
+            }
+            const nextCard = carousel.children[currentIndex];
+            carousel.scrollTo({
+                left: nextCard.offsetLeft,
+                behavior: 'smooth'
+            });
+        }
+
+
+        setInterval(scrollToNextCard, 2500);
+    </script>
+
+    <style>
+
+        .reset-scroll {
+            scroll-behavior: smooth;
+            scroll-snap-type: none;
+        }
+    </style>
 </body>
 </html>

@@ -10,7 +10,19 @@
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link href="StyleSheet.css" rel="stylesheet" />
-    
+    <style>
+        .card.h-100.shadow-sm {
+            box-shadow: -5px 5px 8px rgba(0, 133, 199, 0.2), 5px -5px 8px rgba(255, 215, 0, 0.2), -5px -5px 8px rgba(0, 0, 0, 0.2), 5px 5px 8px rgba(0, 166, 81, 0.2), -10px -10px 8px rgba(255, 76, 76, 0.2);
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+
+            .card.h-100.shadow-sm:hover {
+                transform: scale(1.05);
+            }
+    </style>
+
+
 </head>
 <body>
     <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
@@ -90,6 +102,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="row align-items-center">
                 <div class="col-md-auto">
                     <button type="button"
@@ -101,12 +115,12 @@
                 </div>
                 <div class="col-md-auto">
                     <button class="btn btn-outline-primary" id="btnShowTable" onclick="toggleView('table')">
-                        <i class="fa fa-table"></i> 
+                        <i class="fa fa-table"></i>
                     </button>
                 </div>
                 <div class="col-md-auto">
                     <button class="btn btn-outline-primary" id="btnShowCards" onclick="toggleView('cards')">
-                        <i class="fa fa-th"></i> 
+                        <i class="fa fa-th"></i>
                     </button>
                 </div>
                 <div class="col-md-auto ms-auto">
@@ -119,6 +133,13 @@
                                aria-describedby="search-addon" />
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                     </div>
+                </div>
+
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <h3 class="mb-3">Atletas por Edições Olimpicas</h3>
+                    <canvas id="myChart" width="400" height="70"></canvas>
                 </div>
             </div>
             <!-- Working Area -->
@@ -180,15 +201,18 @@
                     </tbody>
                 </table>
             </div>
-    
-            <!---->
-            <div id="cardsView" class="row row-cols-1 row-cols-md-4 g-4" data-bind="foreach: athletes"  >
+
+            <div id="cardsView"
+                 class="row row-cols-1 row-cols-md-4 g-4"
+                 data-bind="foreach: athletes">
                 <div class="col">
-                    <div class="card h-100 shadow-sm" id="place" data-bind="attr: {id: Id}">
-                        <img src="" class="card-img-top" id="img_jogadores" data-bind="attr: {src: Photo}" alt="Foto do atleta">
+                    <div class="card h-100 shadow-sm " id="place" data-bind="attr: {id: Id}">
+                        <img data-bind="attr: { src: Photo }"
+                             onerror="this.src='../imagens/PersonNotFound.png'"
+                             class="img-fluid rounded" />
                         <div class="card-body">
-                            <h5 class="card-title" data-bind="text: Name"></h5>
-                            
+                            <h5 class="card-title" style="text-align:center" data-bind="text: Name"></h5>
+
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <a class="cont" data-bind="attr: { href:'./AthletesDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
@@ -201,100 +225,136 @@
                     </div>
                 </div>
             </div>
-                 <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content ModalBg">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    <img src="/imagens/Paris2024.png" height="30" /> Loading data...
-                                </h5>
-                            </div>
-                            <div class="modal-body text-center">
-                                <i class="fa fa-spin fa-3x fa-refresh"></i>
-                            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content ModalBg">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                <img src="/imagens/Paris2024.png" height="30" /> Loading data...
+                            </h5>
+                        </div>
+                        <div class="modal-body text-center">
+                            <i class="fa fa-spin fa-3x fa-refresh"></i>
                         </div>
                     </div>
                 </div>
-                <div class="modal fade"
-                     id="exampleModal"
-                     tabindex="-1"
-                     role="dialog"
-                     aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content ModalBg">
-                            <div class="modal-header">
-                                <img class="modalImage" src="./heart.png" />
-                            </div>
-
-
-                            <!-- ko if: favList().length > 0-->
-                            <div class="modal-body col-12" data-bind="foreach: favList">
-                                <p class="lead col-12">
-                                    <a data-bind="attr: {href: './AthletesDetails.html?id=' + Id}, text: Name"></a>
-
-                                    <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
-                                       class="fa fa-trash text-danger float-end"
-                                       aria-hidden="true"
-                                       data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
-                                </p>
-                                <br />
-                            </div>
-                            <button type="button"
-                                    class="close b-0 bg-body-tertiary btn2"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close">
-                                <span aria-hidden="true">OK</span>
-                            </button>
-                            <!-- /ko -->
+            </div>
+            <div class="modal fade"
+                 id="exampleModal"
+                 tabindex="-1"
+                 role="dialog"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content ModalBg">
+                        <div class="modal-header">
+                            <img class="modalImage" src="./heart.png" />
                         </div>
+
+
+                        <!-- ko if: favList().length > 0-->
+                        <div class="modal-body col-12" data-bind="foreach: favList">
+                            <p class="lead col-12">
+                                <a data-bind="attr: {href: './AthletesDetails.html?id=' + Id}, text: Name"></a>
+
+                                <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
+                                   class="fa fa-trash text-danger float-end"
+                                   aria-hidden="true"
+                                   data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
+                            </p>
+                            <br />
+                        </div>
+                        <button type="button"
+                                class="close b-0 bg-body-tertiary btn2"
+                                data-bs-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">OK</span>
+                        </button>
+                        <!-- /ko -->
                     </div>
                 </div>
+            </div>
 
-                <!-- End of Working Area -->
-                <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-                    <div class="container small">
-                        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
-                        <div class="navbar-nav">
-                            <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
-                        </div>
+            <!-- End of Working Area -->
+            <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+                <div class="container small">
+                    <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+                    <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+                    <div class="navbar-nav">
+                        <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
                     </div>
-                </nav>
-                <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
-                <script src="../lib/jquery/dist/jquery.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-                <script src="myJs.js"></script>
-                <script src="athletes.js"></script>
-                <script>
-                    function toggleView(view) {
-        if (view === 'table') {
-            document.getElementById('tableView').style.display = 'block';
-            document.getElementById('cardsView').style.display = 'none';
-            document.getElementById('btnShowTable').classList.add('active');
-            document.getElementById('btnShowCards').classList.remove('active');
-            localStorage.setItem('athleteView', 'table');
-        } else if (view === 'cards') {
-            document.getElementById('cardsView').style.display = 'flex';
-            document.getElementById('tableView').style.display = 'none';
-            document.getElementById('btnShowCards').classList.add('active');
-            document.getElementById('btnShowTable').classList.remove('active');
-            localStorage.setItem('athleteView', 'cards');
-        }
+                </div>
+            </nav>
+            <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+            <script src="../lib/jquery/dist/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+                    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA="
+                    crossorigin="anonymous"></script>
+            <script src="myJs.js"></script>
+            <script src="athletes.js"></script>
+            <script>
+                function toggleView(view) {
+                    if (view === 'table') {
+                        document.getElementById('tableView').style.display = 'block';
+                        document.getElementById('cardsView').style.display = 'none';
+                        document.getElementById('btnShowTable').classList.add('active');
+                        document.getElementById('btnShowCards').classList.remove('active');
+                        localStorage.setItem('athleteView', 'table');
+                    } else if (view === 'cards') {
+                        document.getElementById('cardsView').style.display = 'flex';
+                        document.getElementById('tableView').style.display = 'none';
+                        document.getElementById('btnShowCards').classList.add('active');
+                        document.getElementById('btnShowTable').classList.remove('active');
+                        localStorage.setItem('athleteView', 'cards');
                     }
-                    document.addEventListener("DOMContentLoaded", function () {
-                        const savedView = localStorage.getItem('athleteView');
-                        if (savedView === 'table') {
-                            toggleView('table');
-                        } else if (savedView === 'cards') {
-                            toggleView('cards');
-                        } else {
-                            toggleView('table');
-                        }
-                    });
-                </script>
+                }
+                document.addEventListener("DOMContentLoaded", function () {
+                    const savedView = localStorage.getItem('athleteView');
+                    if (savedView === 'table') {
+                        toggleView('table');
+                    } else if (savedView === 'cards') {
+                        toggleView('cards');
+                    } else {
+                        toggleView('table');
+                    }
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    let customCounters = [1423, 8391, 1800, 9300, 1737, 10318, 2176, 10651, 2399, 10625, 2574, 10942, 2622, 10568, 2871, 11238, 2922, 11090, 2834, 10672]; 
+                    let customNames = ["1988 Winter", "1988 Summer", "1992 Winter", "1992 Summer", "1994 Winter", "1996 Summer", "1998 Winter", "2000 Summer", "2002 Winter", "2004 Summer", "2006 Winter", "2008 Summer", "2010 Winter", "2012 Summer", "2014 Winter", "2016 Summer", "2018 Winter", "2020 Summer", "2022 Winter", "2024 Summer"]; // Example data for Olympic Games editions
 
+                    createBarGraph(customCounters, customNames);
+
+                    function createBarGraph(Counter, Name) {
+                        let barChart = new Chart("myChart", {
+                            type: "bar",
+                            data: {
+                                labels: Name,
+                                datasets: [{
+                                    data: Counter,
+                                    label: 'Lista Numero Atletas por Edição Olimpica ',
+                                    backgroundColor: ["#0275d8", "#292b2c", "#d9534f", "#f0ad4e", "#5cb85c"]
+                                }]
+                            },
+                            options: {
+                                animations: {
+                                    tension: {
+                                        duration: 1000,
+                                        easing: 'linear',
+                                        from: 1,
+                                        to: 0,
+                                        loop: true
+                                    }
+                                },
+                            }
+                        });
+                    }
+                });
+            </script>
 </body>
 </html>

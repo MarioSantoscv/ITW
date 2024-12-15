@@ -131,5 +131,19 @@ main {
     border-radius: 8px;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+.CardBg {
+    box-shadow: -5px 5px 8px rgba(0, 133, 199, 0.2), 5px -5px 8px rgba(255, 215, 0, 0.2), -5px -5px 8px rgba(0, 0, 0, 0.2), 5px 5px 8px rgba(0, 166, 81, 0.2), -10px -10px 8px rgba(255, 76, 76, 0.2);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
 
+    .CardBg:hover {
+        transform: scale(1.05);
+    }
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
    

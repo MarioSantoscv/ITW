@@ -1,15 +1,43 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ITW 2024/25 - Paris 2024 Athletes</title>
+    <title>ITW 2024/25 - Paris 2024 Torch Route</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link href="StyleSheet.css" rel="stylesheet" />
+    <style>
+        .bannerTop {
+            background-image: url('../Images/banner1.png')
+        }
+
+        button.btn {
+            background-color: yellow;
+            color: black;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            margin-right: 5px;
+        }
+
+            button.btn i {
+                font-size: 18px;
+            }
+          
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
@@ -25,16 +53,16 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bookmark-o text-danger"></i> Tabelas principais</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="./athletes.html">Atletas</a></li>
-                            <li><a class="dropdown-item " href="./Treinadores.html">Treinadores</a></li>
-                            <li><a class="dropdown-item " href="./Arbitros.html">Delegados | Árbitros</a></li>
+                            <li><a class="dropdown-item " href="/Projeto/athletes.html">Atletas</a></li>
+                            <li><a class="dropdown-item " href="/Projeto/Treinadores.html">Treinadores</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Technical_officials">Delegados | Árbitros</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="./Equipas.html">Equipas</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item " href="./Modalidades.html">Modalidades</a></li>
-                            <li><a class="dropdown-item " href="./Competitions.html">Competições</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Sports">Modalidades</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Competitions">Competições</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-info text-body-tertiary"></i> [Athletes]/[Index]</a></li>
+                            
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -51,13 +79,13 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs text-success" aria-hidden="true"></i> Outras</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="./torch.html">Tocha olímpica</a></li>
+                            <li><a class="dropdown-item " href="/Projeto/torch.html">Tocha olímpica</a></li>
                             <li><a class="dropdown-item " href="/Paris2024/Venues">Estádios | Espaços</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="/Paris2024/Medals_total">Medalheiro</a></li>
-                            <li><a class="dropdown-item " href="./Medals.html">Medalhas atribuidas</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/Medals">Medalhas atribuidas</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item " href="./Noc.html">Comités Olímpicos Nacionais</a></li>
+                            <li><a class="dropdown-item " href="/Paris2024/NOCs">Comités Olímpicos Nacionais</a></li>
                             <li><a class="dropdown-item " href="/Paris2024/Nationalities">Nacionalidades</a></li>
                         </ul>
                     </li>
@@ -67,162 +95,73 @@
                     <li><a class="nav-link" href="/Paris2024/Help"><i class="fa fa-question-circle-o text-danger" aria-hidden="true"></i> Help</a></li>
                     <li class="navbar-text hstack"><div class="vr"></div></li>
                     <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="light" aria-pressed="false"><i class="theme-icon fa fa-sun-o" title="Modo claro"></i></div></li>
-
                     <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="dark" aria-pressed="false"><i class="theme-icon fa fa-moon-o" title="Modo escuro"></i></div></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+
+    <!-- Work Area-->
     <div class="container-xl">
-        <main role="main" class="pb-3">
-
-
-            <div class="border-bottom pt-4 pb-2 mb-3">
-                <div class="row">
-                    <div class=" col-md-8">
-                        <h2><i class="text-danger fa fa-user-o"></i> Lista de Treinadores</h2>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="input-group rounded">
-                            <input id="search"
-                                   type="search"
-                                   class="form-control autocomplete rounded"
-                                   placeholder="Pesquisa"
-                                   aria-label="Search"
-                                   aria-describedby="search-addon" />
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                    <!-- Working Area -->
-                    <!-- ko if:athletes().length > 0 -->
-                    <div class="row small">
-                        <p class=" col-4 mr-auto pt-2">
-                            <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-                            <span data-bind="html: 'Athletes: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
-                        </p>
-                        <div class="col-8 my-0 pt-3">
-                            <ul class="pagination float-end">
-                                <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Medals.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Medals.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
-                                <!-- /ko -->
-                                <!-- ko foreach: pageArray()-->
-                                <!-- ko if:$data == $parent.currentPage() -->
-                                <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
-                                <!-- /ko -->
-                                <!-- ko if:$data != $parent.currentPage() -->
-                                <li class="page-item"><a class="page-link" data-bind="attr: { href: './Medals.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title:'Goto Page ' + $data }, text:$data"></a></li>
-                                <!-- /ko -->
-                                <!-- /ko -->
-                                <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Medals.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Medals.html?page=' + totalPages() }">⇥</a></li>
-                                <!-- /ko -->
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /ko -->
-
-
-                    <table class="table table-hover TableBg">
-                        <thead class="thead-dark ">
-                            <tr class="table-primary">
-                                <th scope="col">Modalidade </th>
-                                <th scope="col">Competição  </th>
-                                <th scope="col">Tipo de Medalha  </th>
-                                <th scope="col">Sexo  </th>
-                                <th scope="col">Nome (Atleta|Equipa)  </th>
-                                <th scope="col">NOC  </th>
-
-
-                                <th scope="col" class="text-right"></th>
-                            </tr>
-                        </thead>
-                        <tbody data-bind="foreach: athletes">
-                            <tr>
-                                <td scope="row" class="align-middle" data-bind="text:CountryCode"></td>
-                                <td scope="row" class="align-middle" data-bind="text:CountryName"></td>
-                                <td scope="row" class="align-middle" data-bind="text:GoldMedal"></td>
-                                <td scope="row" class="align-middle" data-bind="text:SilverMedal"></td>
-                                <td scope="row" class="align-middle" data-bind="text:BronzeMedal"></td>
-                                <td scope="row" class="align-middle" data-bind="text:Total"></td>
-
-                                <td scope="row" class="text-end">
-                                    <a class="cont" data-bind="attr: { href:'./Treinadores_Details.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="border-bottom pt-4 pb-2 mb-3">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2><i class="text-success fa fa-map-o" aria-hidden="true"></i> Medalhas Paises??</h2>
                 </div>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content ModalBg">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    <img src="/imagens/Paris2024.png" height="30" /> Loading data...
-                                </h5>
-                            </div>
-                            <div class="modal-body text-center">
-                                <i class="fa fa-spin fa-3x fa-refresh"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade"
-                     id="exampleModal"
-                     tabindex="-1"
-                     role="dialog"
-                     aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content ModalBg">
-                            <div class="modal-header">
-                                <img class="modalImage" src="./heart.png" />
-                            </div>
+            </div>
+
+            <!-- Buttons to set Order -->
+          
+
+            <table class="table table-hover TableBg">
+                <thead class="thead-dark table-primary">
+                    <tr>
+                        <th scope="col">NOC <button class="btn" data-bind="click: setOrder1"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>  <button class="btn" data-bind="click: setOrder2"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></th>
+                        <th scope="col">Ouro</th>
+                        <th scope="col">Prata</th>
+                        <th scope="col">Bronze</th>
+                        <th scope="col">Total                       <button class="btn" data-bind="click: setOrder3"><i class="fa fa-arrow-up" aria-hidden="true"></i></button><button class="btn" data-bind="click: setOrder4"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: athletes">
+                    <tr>
+                        <td scope="row" class="align-middle" data-bind="text: CountryName"></td>
+                        <td scope="row" class="align-middle" data-bind="text: GoldMedal"></td>
+                        <td scope="row" class="align-middle" data-bind="text: SilverMedal"></td>
+                        <td scope="row" class="align-middle" data-bind="text: BronzeMedal"></td>
+                        <td scope="row" class="align-middle" data-bind="text: Total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 
-                            <!-- ko if: favList().length > 0-->
-                            <div class="modal-body col-12" data-bind="foreach: favList">
-                                <p class="lead col-12">
-                                    <a data-bind="attr: {href: './AthletesDetails.html?id=' + Id}, text: Name"></a>
+    <!-- End of Work Area -->
+    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none text-muted">jsp@ua.pt</a>.</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
 
-                                    <i style="cursor: pointer; font-size: 20px; margin-top: 5px"
-                                       class="fa fa-trash text-danger float-end"
-                                       aria-hidden="true"
-                                       data-bind="click: function(data, event) { removeFav( data, $(event.currentTarget)); }"></i>
-                                </p>
-                                <br />
-                            </div>
-                            <button type="button"
-                                    class="close b-0 bg-body-tertiary btn2"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close">
-                                <span aria-hidden="true">OK</span>
-                            </button>
-                            <!-- /ko -->
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- End of Working Area -->
-                <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-                    <div class="container small">
-                        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
-                        <div class="navbar-nav">
-                            <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
-                        </div>
-                    </div>
-                </nav>
-                <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
-                <script src="../lib/jquery/dist/jquery.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-                <script src="myJs.js"></script>
-                <script src="Country_medals.js"></script>
-
+    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="myJs.js"></script>
+    <script src="Country_Medals.js"></script>
 </body>
 </html>

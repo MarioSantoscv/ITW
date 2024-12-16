@@ -63,13 +63,13 @@ $.ajax({
 
 // Ícones personalizados
 var blueIcon = L.icon({
-    iconUrl: 'https://www.clipartmax.com/png/middle/338-3388064_computer-icons-marker-pen-location-map-highlighter-location-marker-icon-png.png',
+    iconUrl: '/imagens/mapmarker.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41]
 });
 
 var redIcon = L.icon({
-    iconUrl: 'https://www.clipartmax.com/png/middle/338-3388064_computer-icons-marker-pen-location-map-highlighter-location-marker-icon-png.png',
+    iconUrl: '/imagens/mapmarker.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41]
 });

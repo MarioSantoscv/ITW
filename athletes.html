@@ -121,7 +121,12 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        <h3 class="mb-3">Nações por Edições Olimpicas</h3>
+                        <canvas id="myChart" width="400" height="70"></canvas>
+                    </div>
+                </div>
             </div>
             <!-- Working Area -->
             <!-- ko if:athletes().length > 0 -->
@@ -268,6 +273,7 @@
             <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
             <script src="../lib/jquery/dist/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script src="myJs.js"></script>
             <script src="athletes.js"></script>
             <script>
@@ -297,6 +303,38 @@
                     }
                 });
             </script>
+            <script>
+                $(document).ready(function () {
+                    let customCounters = [1423, 8391, 1800, 9300, 1737, 10318, 2304, 11000, 2399, 10557, 2508, 10942, 2626, 10500, 2780, 11238, 2900, 11319, 2893, 10500];
+                    let customNames = ["1988 Winter", "1988 Summer", "1992 Winter", "1992 Summer", "1994 Winter", "1996 Summer", "1998 Winter", "2000 Summer", "2002 Winter", "2004 Summer", "2006 Winter", "2008 Summer", "2010 Winter", "2012 Summer", "2014 Winter", "2016 Summer", "2018 Winter", "2020 Summer", "2022 Winter", "2024 Summer"]; // Example data for Olympic Games editions
 
+                    createBarGraph(customCounters, customNames);
+
+                    function createBarGraph(Counter, Name) {
+                        let barChart = new Chart("myChart", {
+                            type: "bar",
+                            data: {
+                                labels: Name,
+                                datasets: [{
+                                    data: Counter,
+                                    label: 'Lista Numero Nações por Edição Olimpica ',
+                                    backgroundColor: ["#64C7E3", "#357EBF", "#B579D4", "#A3F59F", "#E4D977"]
+                                }]
+                            },
+                            options: {
+                                animations: {
+                                    tension: {
+                                        duration: 1000,
+                                        easing: 'linear',
+                                        from: 1,
+                                        to: 0,
+                                        loop: true
+                                    }
+                                },
+                            }
+                        });
+                    }
+                });
+            </script>
 </body>
 </html>

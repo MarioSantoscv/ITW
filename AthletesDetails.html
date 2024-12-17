@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -11,8 +12,8 @@
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link href="StyleSheet.css" rel="stylesheet" />
-    
-      
+
+
 </head>
 <body>
     <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
@@ -104,31 +105,31 @@
                                     <!-- Medals Section -->
                                     <div>
                                         <h6>Medalhas: </h6>
-                                        <ul  data-bind="foreach: Medals">
+                                        <ul data-bind="foreach: Medals">
                                             <li class="list-group-item">
                                                 <span>Tipo:</span> <span data-bind="text: Medal_Type"></span><br />
                                                 <span>No Desporto:</span> <span data-bind="text: Sport_name"></span>
-                                                
+
                                             </li>
-                                        </ul>   
+                                        </ul>
                                     </div>
-                                    <hr/>
+                                    <hr />
                                     <!-- Sports Section -->
                                     <div>
                                         <h6>Desportos:</h6>
-                                        <ul  data-bind="foreach: Sports">
+                                        <ul data-bind="foreach: Sports">
                                             <li class="list-group-item" data-bind="text: $data"></li>
                                         </ul>
                                     </div>
-                                    <hr/>
+                                    <hr />
                                     <!-- Competitions Section -->
                                     <div>
                                         <h6>Competições:</h6>
-                                        <ul  data-bind="foreach: Competitions">
+                                        <ul data-bind="foreach: Competitions">
                                             <li class="list-group-item" data-bind="text: $data"></li>
                                         </ul>
                                     </div>
-                                    <hr/>
+                                    <hr />
                                 </div>
                             </div>
                         </div>

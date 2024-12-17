@@ -1,15 +1,21 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ITW 2024/25 - Paris 2024 Athletes</title>
+    <title>ITW 2024/25 - Paris 2024 Torch Route</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link href="StyleSheet.css" rel="stylesheet" />
+    <style>
+        .bannerTop {
+            background-image: url('../Images/banner1.png')
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom" style="height:70px; font-size:22px; text-align:center">
@@ -75,63 +81,65 @@
     </nav>
 
 
-    <div class="container">
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Informações</button>
+    <!-- Work Area-->
 
-        </div>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                <div class="container" id="nav-home-tab">
-                    <div class="card mb-3 TableBg" style="max-width: 1650px;" id="info">
-                        <div class="row no-gutters">
-                            <div class="col-md-4 d-flex align-items-center justify-content-center">
-                                <img data-bind="attr: { src: Photo }"
-                                     onerror="this.src='../imagens/PersonNotFound.png'"
-                                     class="img-fluid rounded" />
+    <div class="container-xl">
+        <div class="border-bottom pt-4 pb-2 mb-3">
+            <div class="row">
+                <div class=" col-md-8">
+                    <h2><i class=" text-sucess fa fa-map-o" aria-hidden="true"></i> Rota Tocha Olimpica</h2>
+                </div>
+                <table class="table table-hover TableBg">
+                    <thead class="thead-dark table-primary">
+                        <tr>
+                            <th scope="col">Inicio</th>
+                            <th scope="col">Fim</th>
+                            <th scope="col" class="text-right"></th>
+
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: records">
+                        <tr>
+                            <td scope="row" class="align-middle" data-bind="text: EventName"></td>
+                            <td scope="row" class="align-middle" data-bind="text: EventId"></td>
+                            <td scope="row" class="bd text-end">
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+                </main>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content ModalBg">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                    <img src="/imagens/Paris2024.png" height="30" /> Loading data...
+                                </h5>
                             </div>
-                            <div class="col-md-6">
-                                <div class="card-body">
-                                    <h5 class="card-title" data-bind="text:Name"></h5>
-                                    <p class="card-text" data-bind="html: Text"></p>
-
-                                    <div>
-                                        <h6>Desportos:</h6>
-                                        <ul data-bind="foreach: Sports">
-                                            <li class="list-group-item" data-bind="text: $data"></li>
-                                        </ul>
-                                    </div>
-                                    <hr />
-                                </div>
-
+                            <div class="modal-body text-center">
+                                <i class="fa fa-spin fa-3x fa-refresh"></i>
                             </div>
-
                         </div>
                     </div>
-                    <div>
-                        <a href="./Treinadores.html" class="btn btn-sm small"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retornar aos Treinadores</a>
-                    </div>
                 </div>
-            </div>
-
-        </div>
+                <!-- End of Work Area -->
 
 
-    </div>
-
-    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-        <div class="container small">
-            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
-            <div class="navbar-nav">
-                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
-            </div>
-        </div>
-    </nav>
-    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
-    <script src="../lib/jquery/dist/jquery.min.js"></script>
-    <script src="myJs.js"></script>
-    <script src="Treinadores_Details.js"></script>
+                <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+                    <div class="container small">
+                        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+                        <div class="navbar-nav">
+                            <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+                        </div>
+                    </div>
+                </nav>
+                <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+                <script src="../lib/jquery/dist/jquery.min.js"></script>
+                <script src="myJs.js"></script>
+                <script src="Canoagem.js"></script>
 </body>
 </html>

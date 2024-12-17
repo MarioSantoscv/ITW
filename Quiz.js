@@ -25,54 +25,47 @@
             options: ["Usain Bolt", "Michael Phelps", "Larisa Latynina", "Simone Biles"],
             answer: "Michael Phelps",
         },
-        {
-            question: "Qual esporte foi adicionado aos Jogos Olímpicos de Tóquio 2020?",
-            options: ["Surfe", "Futebol", "Basquete 3x3", "Ambos"],
-            answer: "Ambos",
-        },
-        {
-            question: "Qual país sediou as primeiras Olimpíadas da era moderna?",
-            options: ["Grécia", "França", "Inglaterra", "EUA"],
-            answer: "Grécia",
-        },
-        {
-            question: "Qual cidade sediou as Olimpíadas de 2016?",
-            options: ["Rio de Janeiro", "Londres", "Pequim", "Tóquio"],
-            answer: "Rio de Janeiro",
-        },
-        {
-            question: "Qual é o objetivo principal das Olimpíadas?",
-            options: [
-                "Competir e vencer",
-                "Promover a paz e a amizade entre as nações",
-                "Ganhar medalhas para o país",
-                "Demonstrar força nacional",
-            ],
-            answer: "Promover a paz e a amizade entre as nações",
-        },
-        {
-            question: "Quantos anéis estão presentes no símbolo das Olimpíadas?",
-            options: ["4", "5", "6", "7"],
-            answer: "5",
-        },
     ];
 
     let currentQuestionIndex = 0;
     let score = 0;
-    const correctAnswers = [];
-    const incorrectAnswers = [];
+    let timer;
+    const totalTime = 60; // 1 minuto em segundos
+    let timeLeft = totalTime;
 
     const questionEl = document.getElementById("question");
     const optionsEl = document.getElementById("options");
     const nextBtn = document.getElementById("next-btn");
     const resultContainer = document.getElementById("result-container");
     const scoreEl = document.getElementById("score");
-    const reviewContainer = document.getElementById("review-container"); // Contêiner para revisão
+    const reviewContainer = document.getElementById("review-container");
+
+    const timerEl = document.createElement("div");
+    timerEl.id = "timer";
+    timerEl.className = "text-center h5 my-3";
+    document.getElementById("quiz-section").prepend(timerEl);
+
+    function startTimer() {
+        timer = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                showResult();
+            } else {
+                timeLeft--;
+                updateTimerDisplay();
+            }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerEl.textContent = `⏰ Tempo Restante: ${minutes}:${seconds.toString().padStart(2, "0")}`;
+    }
 
     function loadQuestion() {
         const currentQuestion = quizData[currentQuestionIndex];
         questionEl.textContent = currentQuestion.question;
-
         optionsEl.innerHTML = "";
 
         currentQuestion.options.forEach((option) => {
@@ -91,15 +84,10 @@
     }
 
     function selectAnswer(optionEl, correctAnswer) {
-        // Desmarcar outras opções
         Array.from(optionsEl.children).forEach((child) =>
             child.classList.remove("selected")
         );
-
-        // Marcar a resposta selecionada
         optionEl.classList.add("selected");
-
-        // Mostrar botão "Próxima"
         nextBtn.classList.remove("d-none");
 
         nextBtn.onclick = () => {
@@ -108,60 +96,39 @@
     }
 
     function checkAnswer(optionEl, correctAnswer) {
-        const currentQuestion = quizData[currentQuestionIndex];
+        const question = quizData[currentQuestionIndex];
+        const isCorrect = optionEl.textContent === correctAnswer;
+        if (isCorrect) score++;
 
-        if (optionEl.textContent === correctAnswer) {
-            score++;
-            correctAnswers.push(currentQuestion); // Armazena a pergunta correta
-        } else {
-            incorrectAnswers.push(currentQuestion); // Armazena a pergunta errada
-        }
-
+        showAnswerFeedback(question, isCorrect, correctAnswer);
         currentQuestionIndex++;
 
         if (currentQuestionIndex < quizData.length) {
             loadQuestion();
         } else {
+            clearInterval(timer); // Para o temporizador ao final
             showResult();
         }
     }
 
-    function showResult() {
-        const quizContainer = document.getElementById("quiz-container");
-        quizContainer.classList.add("d-none");
+    function showAnswerFeedback(question, isCorrect, correctAnswer) {
+        const feedbackItem = document.createElement("div");
+        feedbackItem.className = "list-group-item";
+        feedbackItem.innerHTML = `
+            <strong>${question.question}</strong><br>
+            ${isCorrect ? "<i class='text-success'>✅ Acertou!</i>" : `<i class='text-danger'>❌ Errou! Resposta correta: <em>${correctAnswer}</em>`}
+        `;
+        reviewContainer.appendChild(feedbackItem);
+    }
 
+    function showResult() {
+        document.getElementById("quiz-container").classList.add("d-none");
         resultContainer.classList.remove("d-none");
         scoreEl.textContent = `Você acertou ${score} de ${quizData.length} perguntas! 🎉`;
-
-        // Exibe revisão das respostas
-        displayReview();
     }
 
-    function displayReview() {
-        const correctList = document.createElement("ul");
-        const incorrectList = document.createElement("ul");
-
-        // Adiciona questões corretas
-        correctList.innerHTML = "<h4>Questões que você acertou:</h4>";
-        correctAnswers.forEach((question) => {
-            const li = document.createElement("li");
-            li.textContent = `✔️ ${question.question}`;
-            correctList.appendChild(li);
-        });
-
-        // Adiciona questões incorretas com respostas corretas
-        incorrectList.innerHTML = "<h4>Questões que você errou (respostas corretas):</h4>";
-        incorrectAnswers.forEach((question) => {
-            const li = document.createElement("li");
-            li.textContent = `❌ ${question.question} (Resposta correta: ${question.answer})`;
-            incorrectList.appendChild(li);
-        });
-
-        // Adiciona as listas ao contêiner de revisão
-        reviewContainer.appendChild(correctList);
-        reviewContainer.appendChild(incorrectList);
-    }
-
-    // Inicializar o quiz
+    // Inicializa o quiz e o temporizador
     loadQuestion();
+    startTimer();
+    updateTimerDisplay();
 });

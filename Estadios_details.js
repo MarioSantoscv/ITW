@@ -27,7 +27,6 @@
             "Tag: " + self.Tag() + "<hr/>" +
             "Url: " + self.Url() + "<hr/>" +
             "Lon: " + self.Lon() + "<hr/>" +
-            "Lon: " + self.Lon() + "<hr/>" +
             "Lat: " + self.Lat() + "<hr/>";
 
         return txt;

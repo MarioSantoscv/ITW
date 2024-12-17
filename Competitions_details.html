@@ -12,7 +12,7 @@
     <link href="StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
+    <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom" style="height:70px; font-size:22px; text-align:center">
         <div class="container-xl">
             <a href="/Projeto/index.html" class="navbar-brand p-0"><img src="/imagens/Paris2024.png" height="35" /></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
@@ -21,44 +21,45 @@
             </button>
             <div class="collapse navbar-collapse d-md-inline-flex justify-content-between">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li><a class="nav-link" href="/Projeto/home.html"><i class="fa fa-home text-warning" aria-hidden="true"></i>Home</a></li>
+                    <li><a class="nav-link" href="Quiz.html"><i class="fa fa-gamepad" aria-hidden="true"></i> Quiz Game</a></li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bookmark-o text-danger"></i> Tabelas principais</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item " href="./athletes.html">Atletas</a></li>
                             <li><a class="dropdown-item " href="./Treinadores.html">Treinadores</a></li>
-                            <li><a class="dropdown-item " href="./Arbitros.html">Delegados | Árbitros</a></li>
+                            <li><a class="dropdown-item " href="./Technical_officials">Delegados | Árbitros</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="./Equipas.html">Equipas</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="./Modalidades.html">Modalidades</a></li>
                             <li><a class="dropdown-item " href="./Competitions.html">Competições</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-info text-body-tertiary"></i> [Athletes]/[Index]</a></li>
+
+
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-futbol-o text-primary" aria-hidden="true"></i> Torneios</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="/Paris2024/Athletics">Atletismo</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Basketballs">Basquetebol</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Canoe_Sprints">Canoagem de velocidade</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Cycling_Tracks">Ciclismo de pista</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Footballs">Futebol</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Swimmings">Natação</a></li>
+                            <li><a class="dropdown-item " href="./Atletismo.html">Atletismo</a></li>
+                            <li><a class="dropdown-item " href="./Basket.html">Basquetebol</a></li>
+                            <li><a class="dropdown-item " href="./Canoagem.html">Canoagem de velocidade</a></li>
+                            <li><a class="dropdown-item " href="./Ciclismo.html">Ciclismo de pista</a></li>
+                            <li><a class="dropdown-item " href="./Futebol.html">Futebol</a></li>
+                            <li><a class="dropdown-item " href="./Natação.html">Natação</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs text-success" aria-hidden="true"></i> Outras</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="./torch.html">Tocha olímpica</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Venues">Estádios | Espaços</a></li>
+                            <li><a class="dropdown-item " href="/Projeto/torch.html">Tocha olímpica</a></li>
+                            <li><a class="dropdown-item " href="./Estadios.html">Estádios | Espaços</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Medals_total">Medalheiro</a></li>
+                            <li><a class="dropdown-item " href="./Country_Medals.html">Medalheiro</a></li>
                             <li><a class="dropdown-item " href="./Medals.html">Medalhas atribuidas</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="./Noc.html">Comités Olímpicos Nacionais</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Nationalities">Nacionalidades</a></li>
+
                         </ul>
                     </li>
                     <li><a class="nav-link" href="/Paris2024/Home/Contact"><i class="fa fa-id-badge" aria-hidden="true"></i> Contato</a></li>
@@ -67,7 +68,6 @@
                     <li><a class="nav-link" href="/Paris2024/Help"><i class="fa fa-question-circle-o text-danger" aria-hidden="true"></i> Help</a></li>
                     <li class="navbar-text hstack"><div class="vr"></div></li>
                     <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="light" aria-pressed="false"><i class="theme-icon fa fa-sun-o" title="Modo claro"></i></div></li>
-
                     <li class="nav-item"><div class="nav-link" type="button" data-bs-theme-value="dark" aria-pressed="false"><i class="theme-icon fa fa-moon-o" title="Modo escuro"></i></div></li>
                 </ul>
             </div>
@@ -84,7 +84,7 @@
             <!-- Tab 1 -->
             <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="nav-tab1" tabindex="0">
                 <div class="container">
-                    <div class="card mb-3" style="max-width: 1650px;" id="info">
+                    <div class="card mb-3 TableBg" style="max-width: 1650px;" id="info">
                         <div class="row no-gutters">
                             <div class="col-md-4 d-flex align-items-center justify-content-center">
                                 <img data-bind="attr: { src: Photo }"

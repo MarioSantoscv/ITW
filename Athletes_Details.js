@@ -23,13 +23,13 @@ var vm = function () {
         let txt =
             "Id: " + self.Id() + "<hr/>" +
             "Name: " + self.Name() + "<hr/>" +
-            "Country: "+self.Country()+"<hr/>"+
+            "Country: " + self.Country() + "<hr/>" +
             "Height: " + self.Height() + "<hr/>" +
             "Weight: " + self.Weight() + "<hr/>" +
             "Function: " + self.Function() + "<hr/>" +
             "Reason: " + self.Reason() + "<hr/>" +
             "Ritual: " + self.Ritual() + "<hr/>";
-            
+
         return txt;
     });
 

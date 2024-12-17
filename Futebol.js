@@ -3,7 +3,7 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/Athletics/Events');
+    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/Footballs/Events');
     self.displayName = 'Paris 2024 Torch Route';
     self.records = ko.observableArray([]);
     self.EventId = ko.observable("Unavailable");

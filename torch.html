@@ -11,14 +11,19 @@
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link href="StyleSheet.css" rel="stylesheet" />
-    <style>
-        .bannerTop {
-            background-image: url('../Images/banner1.png')
-        }
-    </style>
+    
+    <!--Leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+    
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom">
+    <nav class="navbar navbar-expand-sm fixed-top bg-body-tertiary border-bottom" style="height:70px; font-size:22px; text-align:center">
         <div class="container-xl">
             <a href="/Projeto/index.html" class="navbar-brand p-0"><img src="/imagens/Paris2024.png" height="35" /></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
@@ -27,44 +32,45 @@
             </button>
             <div class="collapse navbar-collapse d-md-inline-flex justify-content-between">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li><a class="nav-link" href="/Projeto/home.html"><i class="fa fa-home text-warning" aria-hidden="true"></i>Home</a></li>
+                    <li><a class="nav-link" href="Quiz.html"><i class="fa fa-gamepad" aria-hidden="true"></i> Quiz Game</a></li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bookmark-o text-danger"></i> Tabelas principais</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="/Projeto/athletes.html">Atletas</a></li>
-                            <li><a class="dropdown-item " href="/Projeto/Treinadores.html">Treinadores</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Technical_officials">Delegados | Árbitros</a></li>
+                            <li><a class="dropdown-item " href="./athletes.html">Atletas</a></li>
+                            <li><a class="dropdown-item " href="./Treinadores.html">Treinadores</a></li>
+                            <li><a class="dropdown-item " href="./Technical_officials">Delegados | Árbitros</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item " href="./Equipas.html">Equipas</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Sports">Modalidades</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Competitions">Competições</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-info text-body-tertiary"></i> [Athletes]/[Index]</a></li>
+                            <li><a class="dropdown-item " href="./Modalidades.html">Modalidades</a></li>
+                            <li><a class="dropdown-item " href="./Competitions.html">Competições</a></li>
+
+
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-futbol-o text-primary" aria-hidden="true"></i> Torneios</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="/Paris2024/Athletics">Atletismo</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Basketballs">Basquetebol</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Canoe_Sprints">Canoagem de velocidade</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Cycling_Tracks">Ciclismo de pista</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Footballs">Futebol</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Swimmings">Natação</a></li>
+                            <li><a class="dropdown-item " href="./Atletismo.html">Atletismo</a></li>
+                            <li><a class="dropdown-item " href="./Basket.html">Basquetebol</a></li>
+                            <li><a class="dropdown-item " href="./Canoagem.html">Canoagem de velocidade</a></li>
+                            <li><a class="dropdown-item " href="./Ciclismo.html">Ciclismo de pista</a></li>
+                            <li><a class="dropdown-item " href="./Futebol.html">Futebol</a></li>
+                            <li><a class="dropdown-item " href="./Natação.html">Natação</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs text-success" aria-hidden="true"></i> Outras</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item " href="/Projeto/torch.html">Tocha olímpica</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Venues">Estádios | Espaços</a></li>
+                            <li><a class="dropdown-item " href="./Estadios.html">Estádios | Espaços</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Medals_total">Medalheiro</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Medals">Medalhas atribuidas</a></li>
+                            <li><a class="dropdown-item " href="./Country_Medals.html">Medalheiro</a></li>
+                            <li><a class="dropdown-item " href="./Medals.html">Medalhas atribuidas</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item " href="/Paris2024/NOCs">Comités Olímpicos Nacionais</a></li>
-                            <li><a class="dropdown-item " href="/Paris2024/Nationalities">Nacionalidades</a></li>
+                            <li><a class="dropdown-item " href="./Noc.html">Comités Olímpicos Nacionais</a></li>
+
                         </ul>
                     </li>
                     <li><a class="nav-link" href="/Paris2024/Home/Contact"><i class="fa fa-id-badge" aria-hidden="true"></i> Contato</a></li>
@@ -78,77 +84,69 @@
             </div>
         </div>
     </nav>
+    <div class="container-fluid bannerTop">
 
+        <!-- Mapa -->
+        <div id="map" style="height: 400px; margin-top: 20px; height: 480px; margin: 0px; padding: 0px; background-position: center center; background-size: cover; background-repeat: no-repeat; margin-bottom: 20px; background: transparent;"></div>
+
+    </div>
+    <div id="loadingMessage" class="text-center text-info my-3 d-none">
+        <i class="fa fa-spinner fa-spin"></i> Carregando dados, por favor aguarde...
+    </div>
+
+    <div class="container text-center my-4">
+        <h1>Rota da Tocha Olímpica - Paris 2024</h1>
+        <p>Acompanhe o percurso da tocha olímpica pelas cidades anfitriãs.</p>
+    </div>
 
     <!-- Work Area-->
-  
-    <div class="container-xl">
-        <div class="border-bottom pt-4 pb-2 mb-3">
-            <div class="row">
-                <div class=" col-md-8">
-                    <h2><i class=" text-sucess fa fa-map-o" aria-hidden="true"></i> Rota Tocha Olimpica</h2>
-                </div>
-                <table class="table table-hover TableBg">
-                    <thead class="thead-dark table-primary">
-                        <tr>
-                            <th scope="col">Inicio</th>
-                            <th scope="col">Fim</th>
-                            <th scope="col">Titulo do Segmento</th>
-                            <th scope="col">Cidade</th>
-                            <th scope="col">URL</th>
-                            <th scope="col">Segmento</th>
-                        </tr>
-                    </thead>
-                    <tbody data-bind="foreach: records">
-                        <tr>
-                            <td scope="row" class="align-middle" data-bind="text: Date_start"></td>
-                            <td scope="row" class="align-middle" data-bind="text: Date_end"></td>
-                            <td scope="row" class="align-middle" data-bind="text: Title"></td>
-                            <td scope="row" class="align-middle" data-bind="text: City"></td>
-                            <td scope="row" class="align-middle"><a class="nav-link" data-bind="text: Title, attr: { href: Url }" title="Show Details"></a></td>
-                            <td scope="row" class="align-middle" data-bind="text: Stage_number"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                </main>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content ModalBg">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    <img src="/imagens/Paris2024.png" height="30" /> Loading data...
-                                </h5>
-                            </div>
-                            <div class="modal-body text-center">
-                                <i class="fa fa-spin fa-3x fa-refresh"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Work Area -->
-                <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-                    <div class="container small">
-                        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none text-muted">jsp@ua.pt</a>.</div>
-                        <div class="navbar-nav">
-                            <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
-                        </div>
-                    </div>
-                </nav>
+    <main class="container-lg">
+        <table class="table table-hover  TableBg">
+            <thead class="thead-dark">
+                <tr class="table-primary">
+                    <th class="d-none d-lg-table-cell align-middle" scope="col">From</th>
+                    <th class="d-none d-xl-table-cell align-middle" scope="col">To</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">City</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Stage num</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: records">
+                <tr>
+                    <td class="d-none d-lg-table-cell align-middle" data-bind="text:Date_start"></td>
+                    <td class="d-none d-xl-table-cell align-middle" data-bind="text:Date_end"></td>
+                    <td class="align-middle" data-bind="text:Title"></td>
+                    <td class="align-middle">
+                        <a class="nav-link" style="text-decoration: none; color: white;" data-bind="text:City" title="See on map"></a>
+                    </td>
+                    <td class="align-middle">
+                        <a class="nav-link" style="text-decoration: none; color: white;" data-bind="text:Title, attr: { href: Url }" title="Show Details"></a>
+                    </td>
+                    <td class="align-middle" data-bind="text:Stage_number"></td>
+                </tr>
+            </tbody>
+        </table>
 
-                <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-                    <div class="container small">
-                        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
-                        <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(#######)</div>
-                        <div class="navbar-nav">
-                            <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
-                        </div>
-                    </div>
-                </nav>
-                <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
-                <script src="../lib/jquery/dist/jquery.min.js"></script>
-                <script src="myJs.js"></script>
-                <script src="torch.js"></script>
+
+    </main>
+    <!-- End of Work Area -->
+    <!--Footer-->
+    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2024/25</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by Mario(127560) and Kelvin(121420)</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <!--Scripts-->
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="myJs.js"></script>
+    <script src="torch.js"></script>
+    <link href="StyleSheet.css" rel="stylesheet" />
 </body>
 </html>

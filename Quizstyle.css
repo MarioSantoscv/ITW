@@ -11,7 +11,7 @@ body {
 }
 
 #quiz-section {
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -27,7 +27,7 @@ body {
 
  #result-container {
         background-color: black; /* Fundo do resultado mais escuro */
-        color: wheat; /* Texto branco para contraste */
+        color: white; /* Texto branco para contraste */
         border-radius: 10px;
         padding: 20px;
     }
@@ -81,12 +81,41 @@ body {
     }
 }
 
-/* Rodapé estilizado */
-nav.fixed-bottom {
-    background: #2d3436;
-    color: white;
+
+.list-group-item.selected {
+    background-color: #dfe6e9;
+    font-weight: bold;
+    border-left: 5px solid #0984e3;
 }
 
-    nav.fixed-bottom a {
-        color: #74b9ff;
+.text-success {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.text-danger {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+#timer {
+    color: #e74c3c;
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
     }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
